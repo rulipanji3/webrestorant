@@ -1,0 +1,5 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+@source '../views/warung-makan.blade.php';
+@source '../js/warung-makan.js';

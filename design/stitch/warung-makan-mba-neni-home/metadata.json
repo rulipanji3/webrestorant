@@ -1,0 +1,17 @@
+{
+    "project": {
+        "title": "Warung Makan Mba Neni Website",
+        "id": "17316044604614904408"
+    },
+    "screen": {
+        "title": "Warung Makan Mba Neni - Home",
+        "id": "0444634589ec4e28ae1cd69ec0223341",
+        "width": "2560",
+        "height": "11882",
+        "deviceType": "DESKTOP"
+    },
+    "files": {
+        "screenshot": "screenshot.png",
+        "htmlCode": "index.html"
+    }
+}

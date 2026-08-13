@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Warung Makan Mba Neni | Authentic Javanese Cuisine in Purwokerto</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-fixed": "#ffdbd0",
+                    "surface-bright": "#fff8f6",
+                    "primary": "#442a22",
+                    "surface-container": "#ffe9e2",
+                    "secondary-fixed-dim": "#88d982",
+                    "primary-fixed-dim": "#e7bdb1",
+                    "tertiary": "#4a2900",
+                    "surface": "#fff8f6",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#422b22",
+                    "surface-container-low": "#fff1ec",
+                    "tertiary-fixed": "#ffdcbe",
+                    "surface-container-high": "#ffe2d9",
+                    "on-primary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "inverse-on-surface": "#ffede7",
+                    "secondary-fixed": "#a3f69c",
+                    "on-secondary-fixed": "#002204",
+                    "on-tertiary": "#ffffff",
+                    "on-tertiary-container": "#ffa02e",
+                    "primary-container": "#5d4037",
+                    "on-tertiary-fixed-variant": "#693c00",
+                    "on-primary-fixed": "#2c160e",
+                    "background": "#fff8f6",
+                    "on-surface-variant": "#504441",
+                    "surface-dim": "#f8d2c4",
+                    "on-surface": "#2b160f",
+                    "tertiary-container": "#6a3c00",
+                    "secondary-container": "#a0f399",
+                    "outline": "#827470",
+                    "outline-variant": "#d4c3be",
+                    "on-tertiary-fixed": "#2c1600",
+                    "inverse-primary": "#e7bdb1",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#ba1a1a",
+                    "surface-container-highest": "#ffdbce",
+                    "tertiary-fixed-dim": "#ffb870",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#ffdbce",
+                    "on-primary-container": "#d4ada1",
+                    "surface-tint": "#77574d",
+                    "on-background": "#2b160f",
+                    "on-secondary-container": "#217128",
+                    "on-primary-fixed-variant": "#5d4037",
+                    "on-secondary-fixed-variant": "#005312",
+                    "secondary": "#1b6d24",
+                    "on-error-container": "#93000a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "unit": "8px",
+                    "card-padding": "20px",
+                    "gutter": "24px",
+                    "masonry-gap": "16px",
+                    "margin-desktop": "64px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Playfair Display"],
+                    "headline-sm": ["Playfair Display"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-bold": ["Inter"],
+                    "display-lg": ["Playfair Display"],
+                    "display-lg-mobile": ["Playfair Display"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "headline-sm": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .masonry-grid {
+            columns: 1;
+        }
+        @media (min-width: 768px) { .masonry-grid { columns: 2; } }
+        @media (min-width: 1024px) { .masonry-grid { columns: 3; } }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/90 backdrop-blur-md border-b border-primary/10 shadow-sm transition-all duration-300">
+<nav class="flex justify-between items-center px-margin-mobile md:px-margin-desktop w-full max-w-7xl mx-auto h-20">
+<div class="flex items-center gap-4">
+<img alt="Warung Makan Mba Neni Logo" class="h-12 w-auto object-contain" src="data:image/png;base64,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"/>
+<span class="font-headline-sm text-headline-sm font-bold text-primary hidden md:block">Mba Neni</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-bold text-label-bold text-primary font-bold border-b-2 border-primary pb-1" href="#menu">Menu</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#about">About</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#reviews">Reviews</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#gallery">Gallery</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#location">Location</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-primary-container/10 p-2 rounded-full transition-all">schedule</span>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-bold text-label-bold hover:shadow-lg active:scale-95 transition-all">
+                    Order Now
+                </button>
+<button class="md:hidden flex items-center p-2 text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[90vh] flex items-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/60 to-transparent z-10"></div>
+<img alt="Hero Background" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYAFh5bMylLyTMnH5elSUtSoMgP9Kiv-9chSMxbGhlBvpJqY3zisJEDjTBWv-7YUOEJ5-4D6fYWxcuEa-q7V1YacMkqDRwqUm-TKy_NJQV_Y6OscD-qWqtFbkh033D13D22UkSWpjwMBsWk44TBK5YtRb6Kj8Lohde7Nf1RodHxL2EdtxRfM2pLFK1dEMWQ7V2F7E1JfOfLizNUQErTBMlW-rB5IuOdCPKxWRO7miFptNzasRngVA0L5U2LS5Kg5g4lOSlNN4wNP6i"/>
+</div>
+<div class="relative z-20 w-full max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop py-20">
+<div class="max-w-2xl reveal active">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-secondary-container text-on-secondary-container rounded-full mb-6">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="text-label-bold font-label-bold">TOP RATED IN PURWOKERTO</span>
+</div>
+<h1 class="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary mb-6 leading-tight">
+                        Authentic Javanese Flavors, Served 24 Hours
+                    </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10">
+                        Experience delicious traditional Indonesian cuisine made with fresh ingredients and family recipes loved by thousands of customers.
+                    </p>
+<div class="flex flex-wrap gap-4 mb-12">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-label-bold text-label-bold flex items-center gap-2 shadow-xl hover:-translate-y-1 transition-all">
+                            Order Now <span class="material-symbols-outlined">shopping_cart</span>
+</button>
+<button class="bg-surface-container-high border border-outline-variant text-primary px-8 py-4 rounded-full font-label-bold text-label-bold hover:bg-surface-container-highest transition-all">
+                            View Menu
+                        </button>
+<button class="flex items-center gap-2 text-primary font-label-bold text-label-bold underline underline-offset-4 decoration-primary/30 hover:decoration-primary transition-all">
+                            Get Directions
+                        </button>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-primary/10 pt-8">
+<div>
+<div class="text-primary font-bold text-headline-sm">⭐ 4.6</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Rating</div>
+</div>
+<div>
+<div class="text-primary font-bold text-headline-sm">👥 2,4k+</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Reviews</div>
+</div>
+<div>
+<div class="text-secondary font-bold text-headline-sm flex items-center gap-1">
+<span class="block w-2 h-2 rounded-full bg-secondary animate-pulse"></span> 24h
+                            </div>
+<div class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Open Hours</div>
+</div>
+<div>
+<div class="text-primary font-bold text-headline-sm">💰 Low</div>
+<div class="text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Price Range</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- About Us Section -->
+<section class="py-24 bg-surface-container-low overflow-hidden" id="about">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col md:flex-row items-center gap-16">
+<div class="w-full md:w-1/2 relative reveal">
+<div class="absolute -top-6 -left-6 w-32 h-32 bg-secondary/10 rounded-full blur-3xl"></div>
+<div class="relative rounded-xl overflow-hidden shadow-2xl">
+<img alt="Restaurant Interior" class="w-full h-auto aspect-[4/3] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA46ZADVzV8EfpboeQ0Qu9-5i8g-JaEqupDllKXMXSt9OCBILc_D_GpyAO4rK1CYkx7WQ_AovLBKAa6Yp-6QJ8j9kwIJtZxZThFjH0L2VSp0uzIw4dojsyw2dLKo_rI5AWw2ZWU7zWdl_iYXVBxq8uC5zGtXPiE_kv_NSd5SUZiwY5YGJSllVm1KkpC4wsbXhZ0aTQ7lcOXAWpaaC6fcn2UM_XWcxYx2ramReJJaF5uUVxO-fZu36Zi1Gv33ZMAVmhz6uNkj7KnuMqc"/>
+</div>
+<div class="absolute -bottom-10 -right-10 bg-surface p-6 rounded-xl shadow-xl hidden lg:block border border-primary/5">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<div>
+<div class="font-label-bold text-primary">Est. 1998</div>
+<div class="text-label-sm text-on-surface-variant">Generations of Flavor</div>
+</div>
+</div>
+</div>
+</div>
+<div class="w-full md:w-1/2 reveal">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">About Warung Makan Mba Neni</h2>
+<div class="w-20 h-1 bg-tertiary-fixed-dim mb-8"></div>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6 leading-relaxed">
+                            Nestled in the heart of Purwokerto, Warung Makan Mba Neni represents the pinnacle of authentic Javanese culinary heritage. Our kitchen is built upon time-honored family recipes that have been passed down through generations, ensuring every bite carries the soul of Banyumas.
+                        </p>
+<p class="font-body-md text-body-md text-on-surface-variant mb-10 leading-relaxed">
+                            We believe that great food starts with integrity. That's why we source our ingredients daily from local farmers, choosing only the freshest produce and highest quality meats to create our signature dishes. Our 24-hour service is a testament to our commitment to the community, providing a warm, home-style meal whenever you need it.
+                        </p>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span class="font-label-bold text-primary">100% Halal</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span class="font-label-bold text-primary">Daily Fresh</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span class="font-label-bold text-primary">Traditional Recipes</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-secondary">check_circle</span>
+<span class="font-label-bold text-primary">Purwokerto Local</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Signature Menu Section -->
+<section class="py-24 bg-surface" id="menu">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16 reveal">
+<h2 class="font-headline-md text-headline-md text-primary mb-4">Our Signature Menu</h2>
+<p class="text-on-surface-variant max-w-xl mx-auto">Discover our most loved dishes, prepared with authentic Javanese spices and contemporary culinary precision.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter reveal">
+<!-- Menu Item 1 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm border border-outline-variant/20 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+<div class="relative h-64 overflow-hidden">
+<div class="absolute top-4 right-4 z-10 bg-tertiary text-on-tertiary px-3 py-1 rounded-full font-label-bold text-label-sm">POPULAR</div>
+<img alt="Nasi Campur Jawa" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3VkIe0JPRTdcCxF2DjUCxLRFmzcIQzpjaehcBgI8IMq-pbwqLA-rwWDC7NySoagewymxg7LGV0NEpStz6bpnf9kkF3ZoLEO_jaAERvgIgyBlnsb_CsFC1rfoPltM8HNMxvjcuB3fgBu7MVVqaf_EYgmQp8oaKkRPkFbk3Uuo2qeKvUpZaWxT0WhogKEvn4flo_On_Ia0gJ58NEqo79os7VDQL9hKovnAehY9KE_ZpQptEF1sfLab7CS0k1ROCeGTMnaYI7m-Esm5I"/>
+</div>
+<div class="p-card-padding">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Nasi Campur Jawa</h3>
+<span class="text-secondary font-bold">Rp 25k</span>
+</div>
+<p class="text-label-sm text-on-surface-variant mb-6">A complete platter with yellow rice, roasted chicken, and authentic sambals.</p>
+<button class="w-full py-3 rounded-lg border border-primary text-primary font-label-bold hover:bg-primary hover:text-on-primary transition-all">Add to Cart</button>
+</div>
+</div>
+<!-- Menu Item 2 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm border border-outline-variant/20 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+<div class="relative h-64 overflow-hidden">
+<img alt="Ayam Bakar" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYAFh5bMylLyTMnH5elSUtSoMgP9Kiv-9chSMxbGhlBvpJqY3zisJEDjTBWv-7YUOEJ5-4D6fYWxcuEa-q7V1YacMkqDRwqUm-TKy_NJQV_Y6OscD-qWqtFbkh033D13D22UkSWpjwMBsWk44TBK5YtRb6Kj8Lohde7Nf1RodHxL2EdtxRfM2pLFK1dEMWQ7V2F7E1JfOfLizNUQErTBMlW-rB5IuOdCPKxWRO7miFptNzasRngVA0L5U2LS5Kg5g4lOSlNN4wNP6i"/>
+</div>
+<div class="p-card-padding">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Ayam Bakar</h3>
+<span class="text-secondary font-bold">Rp 22k</span>
+</div>
+<p class="text-label-sm text-on-surface-variant mb-6">Charcoal-grilled chicken marinated in sweet soy and traditional spices.</p>
+<button class="w-full py-3 rounded-lg border border-primary text-primary font-label-bold hover:bg-primary hover:text-on-primary transition-all">Add to Cart</button>
+</div>
+</div>
+<!-- Menu Item 3 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm border border-outline-variant/20 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+<div class="relative h-64 overflow-hidden">
+<img alt="Soto Ayam" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3VkIe0JPRTdcCxF2DjUCxLRFmzcIQzpjaehcBgI8IMq-pbwqLA-rwWDC7NySoagewymxg7LGV0NEpStz6bpnf9kkF3ZoLEO_jaAERvgIgyBlnsb_CsFC1rfoPltM8HNMxvjcuB3fgBu7MVVqaf_EYgmQp8oaKkRPkFbk3Uuo2qeKvUpZaWxT0WhogKEvn4flo_On_Ia0gJ58NEqo79os7VDQL9hKovnAehY9KE_ZpQptEF1sfLab7CS0k1ROCeGTMnaYI7m-Esm5I"/>
+</div>
+<div class="p-card-padding">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Soto Ayam</h3>
+<span class="text-secondary font-bold">Rp 18k</span>
+</div>
+<p class="text-label-sm text-on-surface-variant mb-6">Hearty chicken soup with aromatic turmeric broth and fresh vegetables.</p>
+<button class="w-full py-3 rounded-lg border border-primary text-primary font-label-bold hover:bg-primary hover:text-on-primary transition-all">Add to Cart</button>
+</div>
+</div>
+<!-- Menu Item 4 -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm border border-outline-variant/20 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+<div class="relative h-64 overflow-hidden">
+<img alt="Lauk Rumahan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA46ZADVzV8EfpboeQ0Qu9-5i8g-JaEqupDllKXMXSt9OCBILc_D_GpyAO4rK1CYkx7WQ_AovLBKAa6Yp-6QJ8j9kwIJtZxZThFjH0L2VSp0uzIw4dojsyw2dLKo_rI5AWw2ZWU7zWdl_iYXVBxq8uC5zGtXPiE_kv_NSd5SUZiwY5YGJSllVm1KkpC4wsbXhZ0aTQ7lcOXAWpaaC6fcn2UM_XWcxYx2ramReJJaF5uUVxO-fZu36Zi1Gv33ZMAVmhz6uNkj7KnuMqc"/>
+</div>
+<div class="p-card-padding">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-sm text-headline-sm text-primary">Lauk Rumahan</h3>
+<span class="text-secondary font-bold">Rp 12k</span>
+</div>
+<p class="text-label-sm text-on-surface-variant mb-6">Daily selection of traditional side dishes, perfect for a quick home-style meal.</p>
+<button class="w-full py-3 rounded-lg border border-primary text-primary font-label-bold hover:bg-primary hover:text-on-primary transition-all">Add to Cart</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Why Choose Us -->
+<section class="py-24 bg-primary text-on-primary">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-12">
+<div class="flex flex-col items-center text-center reveal">
+<div class="w-16 h-16 bg-on-primary/10 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-4xl">restaurant</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-2">Authentic Recipes</h4>
+<p class="text-on-primary/70 text-sm">Passed down through generations of Javanese mastery.</p>
+</div>
+<div class="flex flex-col items-center text-center reveal">
+<div class="w-16 h-16 bg-on-primary/10 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-4xl">schedule</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-2">Open 24 Hours</h4>
+<p class="text-on-primary/70 text-sm">Whenever you're hungry, we're ready to serve you.</p>
+</div>
+<div class="flex flex-col items-center text-center reveal">
+<div class="w-16 h-16 bg-on-primary/10 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-4xl">savings</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-2">Affordable</h4>
+<p class="text-on-primary/70 text-sm">Premium quality dining at local warung prices.</p>
+</div>
+<div class="flex flex-col items-center text-center reveal">
+<div class="w-16 h-16 bg-on-primary/10 rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-4xl">family_restroom</span>
+</div>
+<h4 class="font-headline-sm text-headline-sm mb-2">Family Friendly</h4>
+<p class="text-on-primary/70 text-sm">Spacious and welcoming for all your loved ones.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Customer Reviews -->
+<section class="py-24 bg-surface-container-lowest" id="reviews">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col lg:flex-row items-end justify-between mb-16 gap-8 reveal">
+<div class="max-w-2xl">
+<div class="flex items-center gap-1 text-tertiary mb-2">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star_half</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-primary mb-4">4.6 Rating from 2,436+ Guests</h2>
+<p class="text-on-surface-variant">Real experiences from our valued customers who appreciate the authentic taste of Banyumas.</p>
+</div>
+<div class="flex gap-4">
+<button class="p-4 border border-outline rounded-full hover:bg-surface-container transition-all">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<button class="p-4 bg-primary text-on-primary rounded-full hover:shadow-lg transition-all">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
+<div class="p-8 bg-surface border border-outline-variant/30 rounded-2xl shadow-sm italic">
+<p class="font-body-lg text-primary mb-8">"The best Nasi Campur in Purwokerto. It tastes just like my grandmother's cooking. The service is fast even at 2 AM!"</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-fixed-dim"></div>
+<div>
+<div class="font-label-bold text-primary">Budi Santoso</div>
+<div class="text-label-sm text-on-surface-variant">Local Guide</div>
+</div>
+</div>
+</div>
+<div class="p-8 bg-surface border border-outline-variant/30 rounded-2xl shadow-sm italic">
+<p class="font-body-lg text-primary mb-8">"Incredible value for money. The Ayam Bakar is perfectly seasoned and the sambal has the right amount of kick. Highly recommended!"</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-secondary-fixed-dim"></div>
+<div>
+<div class="font-label-bold text-primary">Siti Aminah</div>
+<div class="text-label-sm text-on-surface-variant">Food Enthusiast</div>
+</div>
+</div>
+</div>
+<div class="p-8 bg-surface border border-outline-variant/30 rounded-2xl shadow-sm italic">
+<p class="font-body-lg text-primary mb-8">"Always my go-to place after a long shift. Clean, professional, and consistently delicious. Best Javanese restaurant in town."</p>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed-dim"></div>
+<div>
+<div class="font-label-bold text-primary">Andi Pratama</div>
+<div class="text-label-sm text-on-surface-variant">Night Worker</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Gallery -->
+<section class="py-24 bg-surface" id="gallery">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-16 reveal">
+<h2 class="font-headline-md text-headline-md text-primary mb-4">Gallery &amp; Atmosphere</h2>
+<div class="w-20 h-1 bg-tertiary-fixed-dim mx-auto"></div>
+</div>
+<div class="masonry-grid gap-masonry-gap reveal">
+<div class="mb-masonry-gap break-inside-avoid">
+<img alt="Gallery 1" class="w-full rounded-xl hover:opacity-90 transition-opacity cursor-zoom-in shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYAFh5bMylLyTMnH5elSUtSoMgP9Kiv-9chSMxbGhlBvpJqY3zisJEDjTBWv-7YUOEJ5-4D6fYWxcuEa-q7V1YacMkqDRwqUm-TKy_NJQV_Y6OscD-qWqtFbkh033D13D22UkSWpjwMBsWk44TBK5YtRb6Kj8Lohde7Nf1RodHxL2EdtxRfM2pLFK1dEMWQ7V2F7E1JfOfLizNUQErTBMlW-rB5IuOdCPKxWRO7miFptNzasRngVA0L5U2LS5Kg5g4lOSlNN4wNP6i"/>
+</div>
+<div class="mb-masonry-gap break-inside-avoid">
+<img alt="Gallery 2" class="w-full rounded-xl hover:opacity-90 transition-opacity cursor-zoom-in shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3VkIe0JPRTdcCxF2DjUCxLRFmzcIQzpjaehcBgI8IMq-pbwqLA-rwWDC7NySoagewymxg7LGV0NEpStz6bpnf9kkF3ZoLEO_jaAERvgIgyBlnsb_CsFC1rfoPltM8HNMxvjcuB3fgBu7MVVqaf_EYgmQp8oaKkRPkFbk3Uuo2qeKvUpZaWxT0WhogKEvn4flo_On_Ia0gJ58NEqo79os7VDQL9hKovnAehY9KE_ZpQptEF1sfLab7CS0k1ROCeGTMnaYI7m-Esm5I"/>
+</div>
+<div class="mb-masonry-gap break-inside-avoid">
+<img alt="Gallery 3" class="w-full rounded-xl hover:opacity-90 transition-opacity cursor-zoom-in shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA46ZADVzV8EfpboeQ0Qu9-5i8g-JaEqupDllKXMXSt9OCBILc_D_GpyAO4rK1CYkx7WQ_AovLBKAa6Yp-6QJ8j9kwIJtZxZThFjH0L2VSp0uzIw4dojsyw2dLKo_rI5AWw2ZWU7zWdl_iYXVBxq8uC5zGtXPiE_kv_NSd5SUZiwY5YGJSllVm1KkpC4wsbXhZ0aTQ7lcOXAWpaaC6fcn2UM_XWcxYx2ramReJJaF5uUVxO-fZu36Zi1Gv33ZMAVmhz6uNkj7KnuMqc"/>
+</div>
+<div class="mb-masonry-gap break-inside-avoid">
+<img alt="Gallery 4" class="w-full rounded-xl hover:opacity-90 transition-opacity cursor-zoom-in shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDYAFh5bMylLyTMnH5elSUtSoMgP9Kiv-9chSMxbGhlBvpJqY3zisJEDjTBWv-7YUOEJ5-4D6fYWxcuEa-q7V1YacMkqDRwqUm-TKy_NJQV_Y6OscD-qWqtFbkh033D13D22UkSWpjwMBsWk44TBK5YtRb6Kj8Lohde7Nf1RodHxL2EdtxRfM2pLFK1dEMWQ7V2F7E1JfOfLizNUQErTBMlW-rB5IuOdCPKxWRO7miFptNzasRngVA0L5U2LS5Kg5g4lOSlNN4wNP6i"/>
+</div>
+<div class="mb-masonry-gap break-inside-avoid">
+<img alt="Gallery 5" class="w-full rounded-xl hover:opacity-90 transition-opacity cursor-zoom-in shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3VkIe0JPRTdcCxF2DjUCxLRFmzcIQzpjaehcBgI8IMq-pbwqLA-rwWDC7NySoagewymxg7LGV0NEpStz6bpnf9kkF3ZoLEO_jaAERvgIgyBlnsb_CsFC1rfoPltM8HNMxvjcuB3fgBu7MVVqaf_EYgmQp8oaKkRPkFbk3Uuo2qeKvUpZaWxT0WhogKEvn4flo_On_Ia0gJ58NEqo79os7VDQL9hKovnAehY9KE_ZpQptEF1sfLab7CS0k1ROCeGTMnaYI7m-Esm5I"/>
+</div>
+<div class="mb-masonry-gap break-inside-avoid">
+<img alt="Gallery 6" class="w-full rounded-xl hover:opacity-90 transition-opacity cursor-zoom-in shadow-md" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA46ZADVzV8EfpboeQ0Qu9-5i8g-JaEqupDllKXMXSt9OCBILc_D_GpyAO4rK1CYkx7WQ_AovLBKAa6Yp-6QJ8j9kwIJtZxZThFjH0L2VSp0uzIw4dojsyw2dLKo_rI5AWw2ZWU7zWdl_iYXVBxq8uC5zGtXPiE_kv_NSd5SUZiwY5YGJSllVm1KkpC4wsbXhZ0aTQ7lcOXAWpaaC6fcn2UM_XWcxYx2ramReJJaF5uUVxO-fZu36Zi1Gv33ZMAVmhz6uNkj7KnuMqc"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Dining & Delivery -->
+<section class="py-24 bg-surface-container-high">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="bg-primary text-on-primary rounded-3xl p-12 overflow-hidden relative reveal">
+<div class="absolute right-0 bottom-0 w-1/3 opacity-20 transform translate-x-1/4 translate-y-1/4">
+<span class="material-symbols-outlined text-[300px]">restaurant</span>
+</div>
+<div class="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+<div>
+<h2 class="font-headline-md text-headline-md mb-6 text-on-primary">Dine-In, Takeaway, or Delivered</h2>
+<p class="font-body-lg text-body-lg text-on-primary/80 mb-10">Enjoy Mba Neni's cooking anywhere. We offer contactless delivery, quick takeaway, and a cozy dine-in experience in Purwokerto.</p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-on-primary text-primary px-8 py-4 rounded-full font-label-bold text-label-bold hover:bg-on-primary/90 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined">call</span> Call Us
+                                </button>
+<button class="bg-transparent border border-on-primary text-on-primary px-8 py-4 rounded-full font-label-bold text-label-bold hover:bg-on-primary/10 transition-all">
+                                    Book a Table
+                                </button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+<div class="p-6 bg-on-primary/5 rounded-2xl border border-on-primary/10 text-center">
+<span class="material-symbols-outlined text-4xl mb-4">restaurant</span>
+<div class="font-label-bold">Dine-In</div>
+</div>
+<div class="p-6 bg-on-primary/5 rounded-2xl border border-on-primary/10 text-center">
+<span class="material-symbols-outlined text-4xl mb-4">shopping_bag</span>
+<div class="font-label-bold">Takeaway</div>
+</div>
+<div class="p-6 bg-on-primary/5 rounded-2xl border border-on-primary/10 text-center">
+<span class="material-symbols-outlined text-4xl mb-4">delivery_dining</span>
+<div class="font-label-bold">Delivery</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Location Section -->
+<section class="py-24 bg-surface" id="location">
+<div class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col lg:flex-row gap-16 items-center">
+<div class="w-full lg:w-1/2 reveal">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Visit Us</h2>
+<div class="space-y-6 mb-10">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary text-3xl">location_on</span>
+<div>
+<div class="font-label-bold text-primary text-lg">Address</div>
+<p class="text-on-surface-variant">Pakembaran, Bancarkembar, Kec. Purwokerto Utara, Kabupaten Banyumas, Jawa Tengah 53121</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary text-3xl">schedule</span>
+<div>
+<div class="font-label-bold text-primary text-lg">Opening Hours</div>
+<p class="text-on-surface-variant">Open 24 Hours, 7 Days a Week</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-secondary text-3xl">info</span>
+<div>
+<div class="font-label-bold text-primary text-lg">Landmarks</div>
+<p class="text-on-surface-variant">Near Unsoed Campus, South of Bancarkembar Traditional Market.</p>
+</div>
+</div>
+</div>
+<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-label-bold text-label-bold flex items-center gap-2 hover:shadow-xl transition-all">
+                            Get Google Maps Directions <span class="material-symbols-outlined">directions</span>
+</button>
+</div>
+<div class="w-full lg:w-1/2 reveal">
+<div class="aspect-video bg-surface-container rounded-2xl overflow-hidden shadow-inner relative border border-outline-variant/30">
+<!-- Map Mockup -->
+<img alt="Map View of Purwokerto" class="w-full h-full object-cover grayscale opacity-50" data-location="Purwokerto" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBp-h8I6ty0t7qySD-aYqEMIGaz49vF18WT3mnT22hHWfo5O5nL7FFCjLuli35cWElf1gx5MCiSeZcrU4oXQVFaKylDWT53raNOqCcymUBndByrGUGvCW86x2g2cAtJehHakNX49dpM8HMrl4pthwn_zDq3tVaOr2AGbnh6wKaFQQG2arCH8G1fgx06NOz6epfaGe423AuTwtASaxfsproQS5M9k1dSuodY3Kqim8_-ZORLTlesiH2vc-zlz39o4wuJTe-TPPC36plq"/>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="relative">
+<div class="absolute -inset-8 bg-primary/20 rounded-full animate-ping"></div>
+<div class="w-12 h-12 bg-primary rounded-full border-4 border-surface shadow-2xl flex items-center justify-center relative z-10">
+<span class="material-symbols-outlined text-on-primary">location_on</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-primary-container text-on-primary-container w-full py-margin-desktop px-margin-desktop flex flex-col md:flex-row justify-between items-start gap-gutter border-t border-primary/20">
+<div class="max-w-sm">
+<h5 class="font-headline-sm text-headline-sm mb-6 text-on-primary-container">Warung Makan Mba Neni</h5>
+<p class="font-body-md text-body-md text-on-primary-container/80 mb-8 leading-relaxed">
+                Bringing the authentic warmth and flavors of Javanese kitchen to your table. Purwokerto's favorite 24-hour traditional dining spot.
+            </p>
+<div class="flex gap-4">
+<a class="w-10 h-10 rounded-full bg-on-primary-container/10 flex items-center justify-center hover:bg-on-primary-container/20 transition-all" href="#">
+<img alt="Instagram" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCRINGfRJZ6jjaLyJmFg3zXfbzteExssVqWgS3gzGGMddlBCL7CJFtd071EBjsiqWEOnS2KWY0ilHIwrkbWOXgr4ZzKAnZEMnfFWHENaf6M2LeZr5Gy_lOtlu4kqUAyGqIUimeMKP69Za4m-F_5uT4mNplTCLLS20duG5M-BX8SL_lIBGaRnyZYGSfzJUfS4Wpy2NjuXPAJeFW0rhO2lwi5NBHG6oDL_oSd1UziDiM4rkmLsdLxa2Cg92gkrVwLLVbKYO8UV8ZkmIK8"/>
+</a>
+<a class="w-10 h-10 rounded-full bg-on-primary-container/10 flex items-center justify-center hover:bg-on-primary-container/20 transition-all" href="#">
+<img alt="Facebook" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC17og7ty1DiLnNkxmHtm9NK6UHQHjpi8ibAEsJm9TBMM0CAa3fq8b0BTxexTRI3H3idwZOLYn1YJZGsfqW2w37xv4Z1sL627iSiDB_1YEoj3XM5LRx440WdnGaGFRk1b9NtcvUtVt4W2tNQaxi4EQs_RV6DJhTgm-LIiHSpxbUdKJ3QeA4ewopX9KkxB8xzJ2HXUYmxGmkZDX5W3Q8SuTS4dat5qkboI5lMD5IZHIDNa4f9euCDDcuOoNil5c8LG-lyif7iG-Mc1ux"/>
+</a>
+<a class="w-10 h-10 rounded-full bg-on-primary-container/10 flex items-center justify-center hover:bg-on-primary-container/20 transition-all" href="#">
+<img alt="WhatsApp" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2mGgfK_8PMkKQk-mJ3vnIEWsHeDXCrxownsWWODJMQI8sm7iJ-XmpAnsH2FtrNsI_CfGtMV2qg7qBR1liS_E1GEBD1JNHkfgDnU6Pl-UX_o5SlVT894YqmalWfJMdoAy87r3DaBVehzSqdJMRRBCVW9amqmUDg2PNu--7-hbYfViZ6illhLSSEPXp-Ze_Y4H7NHGARc_vIVmqAz2p7650dnUGcoFsW3i6972mikVlDGD5b7T77MDcjw-BcTRg9DjzqWybdfrZrWNO"/>
+</a>
+</div>
+</div>
+<div>
+<h6 class="font-label-bold text-label-bold uppercase tracking-widest mb-6 opacity-60">Quick Links</h6>
+<ul class="space-y-4">
+<li><a class="text-on-primary-container/80 hover:text-on-primary-container hover:underline transition-all" href="#menu">Menu</a></li>
+<li><a class="text-on-primary-container/80 hover:text-on-primary-container hover:underline transition-all" href="#about">About Us</a></li>
+<li><a class="text-on-primary-container/80 hover:text-on-primary-container hover:underline transition-all" href="#reviews">Reviews</a></li>
+<li><a class="text-on-primary-container/80 hover:text-on-primary-container hover:underline transition-all" href="#gallery">Gallery</a></li>
+<li><a class="text-on-primary-container/80 hover:text-on-primary-container hover:underline transition-all" href="#location">Location</a></li>
+</ul>
+</div>
+<div>
+<h6 class="font-label-bold text-label-bold uppercase tracking-widest mb-6 opacity-60">Business Info</h6>
+<ul class="space-y-4">
+<li class="flex items-center gap-3 text-on-primary-container/80">
+<span class="material-symbols-outlined text-sm">call</span> +62 281 123 4567
+                </li>
+<li class="flex items-center gap-3 text-on-primary-container/80">
+<span class="material-symbols-outlined text-sm">mail</span> info@mbaneni.com
+                </li>
+<li class="flex items-center gap-3 text-on-primary-container/80">
+<span class="material-symbols-outlined text-sm">schedule</span> Open 24/7
+                </li>
+<li><a class="text-on-primary-container/80 hover:text-on-primary-container hover:underline transition-all" href="#">Privacy Policy</a></li>
+<li><a class="text-on-primary-container/80 hover:text-on-primary-container hover:underline transition-all" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div class="w-full mt-12 md:mt-0 pt-12 border-t border-on-primary-container/10 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-label-sm text-label-sm opacity-60">© 2024 Warung Makan Mba Neni. All rights reserved.</p>
+<div class="flex items-center gap-2">
+<span class="text-on-tertiary-container font-bold text-label-bold">Made in Purwokerto</span>
+<span class="material-symbols-outlined text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div>
+</div>
+</footer>
+<!-- FAB for Order Now (Mobile) -->
+<button class="fixed bottom-6 right-6 z-40 md:hidden w-16 h-16 bg-on-tertiary-container text-on-tertiary rounded-full shadow-2xl flex items-center justify-center animate-bounce">
+<span class="material-symbols-outlined text-3xl">shopping_cart</span>
+</button>
+<script>
+        // Entrance Animations (Reveal on scroll)
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('py-2', 'shadow-lg');
+                header.classList.remove('h-20');
+            } else {
+                header.classList.remove('py-2', 'shadow-lg');
+                header.classList.add('h-20');
+            }
+        });
+
+        // Simple smooth scroll script for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body></html>

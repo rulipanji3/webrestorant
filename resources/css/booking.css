@@ -1,0 +1,5 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+@source '../views/booking.blade.php';
+@source '../js/booking.js';

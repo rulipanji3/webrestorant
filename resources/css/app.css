@@ -1,0 +1,196 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-display: 'Playfair Display', serif;
+    --color-brown-50: #FDF8F0;
+    --color-brown-100: #F5E6D3;
+    --color-brown-200: #E8CDB3;
+    --color-brown-300: #D4A87C;
+    --color-brown-400: #C08A5E;
+    --color-brown-500: #A67045;
+    --color-brown-600: #8B5E3C;
+    --color-brown-700: #6B3A2A;
+    --color-brown-800: #5A2E1F;
+    --color-brown-900: #3D1F14;
+    --color-cream: #FFF8F0;
+    --color-green-deep: #2D5016;
+    --color-orange-soft: #E8832A;
+}
+
+@utility scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@utility scroll-reveal-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.scroll-reveal-left.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@utility scroll-reveal-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.scroll-reveal-right.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-up {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-soft {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+.animate-fade-in {
+    animation: fade-in 0.8s ease-out forwards;
+}
+
+.animate-slide-up {
+    animation: slide-up 0.6s ease-out forwards;
+}
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-sans);
+}
+
+@utility text-balance {
+    text-wrap: balance;
+}
+
+.gradient-hero {
+    background: linear-gradient(135deg, rgba(61, 31, 20, 0.85) 0%, rgba(107, 58, 42, 0.7) 50%, rgba(42, 80, 22, 0.6) 100%);
+}
+
+.gradient-overlay {
+    background: linear-gradient(180deg, transparent 0%, rgba(61, 31, 20, 0.9) 100%);
+}
+
+.menu-card {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.menu-card:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+.gallery-item {
+    transition: all 0.5s ease;
+    overflow: hidden;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+}
+
+.gallery-item img {
+    transition: transform 0.5s ease;
+}
+
+.review-slider {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.review-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.nav-blur {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+.btn-primary {
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(232, 131, 42, 0.35);
+}
+
+.btn-secondary {
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(107, 58, 42, 0.3);
+}
+
+.star-glow {
+    filter: drop-shadow(0 0 4px rgba(232, 131, 42, 0.5));
+}
+
+.masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-flow: dense;
+    gap: 1rem;
+}
+
+.masonry-grid .tall {
+    grid-row: span 2;
+}
+
+.masonry-grid .wide {
+    grid-column: span 2;
+}
+
+@media (max-width: 640px) {
+    .masonry-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .masonry-grid .wide {
+        grid-column: span 1;
+    }
+}
+
+.pulse-dot {
+    animation: pulse-soft 2s ease-in-out infinite;
+}
+
+.food-card-shadow {
+    box-shadow: 0 4px 20px rgba(107, 58, 42, 0.12);
+}
+
+.food-card-shadow:hover {
+    box-shadow: 0 12px 40px rgba(107, 58, 42, 0.2);
+}

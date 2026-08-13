@@ -1,0 +1,141 @@
+@theme {
+    --font-sans: 'Manrope', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-display: 'Outfit', var(--font-sans);
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+    /* Night-kitchen palette: warm charcoal + bone + a single ember accent */
+    --color-ink: #0F0D0B;
+    --color-coal: #161210;
+    --color-coal-2: #1D1815;
+    --color-coal-3: #262019;
+    --color-line: #2C2620;
+    --color-bone: #F2EBE1;
+    --color-sand: #B3A796;
+    --color-dust: #6F675C;
+    --color-ember: #F05A13;
+    --color-ember-600: #D9540F;
+    --color-ember-deep: #B84507;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-ink text-bone font-sans antialiased;
+    }
+
+    ::selection {
+        background: var(--color-ember);
+        color: var(--color-ink);
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--color-ember);
+        outline-offset: 2px;
+    }
+}
+
+@layer components {
+    .eyebrow {
+        @apply font-mono text-[11px] uppercase tracking-[0.22em] text-ember;
+    }
+
+    .btn-ember {
+        @apply inline-flex items-center justify-center gap-2 rounded-full bg-ember px-7 py-3.5 text-sm font-bold text-ink transition-all duration-200 hover:-translate-y-0.5 hover:bg-ember-600 active:scale-[0.98];
+        box-shadow: 0 10px 28px -12px rgba(240, 90, 19, 0.6);
+    }
+
+    .btn-ghost {
+        @apply inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-7 py-3.5 text-sm font-semibold text-bone transition-all duration-200 hover:border-white/40 hover:bg-white/5 active:scale-[0.98];
+    }
+
+    .panel {
+        @apply rounded-2xl border border-line bg-coal-2;
+    }
+
+    .card-menu {
+        @apply flex flex-col overflow-hidden rounded-2xl border border-line bg-coal transition-all duration-300 hover:border-ember/40 hover:shadow-[0_16px_40px_-18px_rgba(240,90,19,0.35)];
+    }
+
+    .chip {
+        @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-coal-3 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-sand;
+    }
+
+    .field-label {
+        @apply mb-2 block font-mono text-[11px] uppercase tracking-[0.18em] text-sand;
+    }
+
+    .field {
+        @apply w-full rounded-xl border border-line bg-ink px-4 py-3 text-bone placeholder:text-dust transition-colors focus:border-ember focus:outline-none focus:ring-1 focus:ring-ember/40;
+    }
+
+    .category-tab {
+        @apply inline-flex items-center rounded-full border border-line bg-coal-3 px-5 py-2 font-mono text-[11px] uppercase tracking-[0.14em] text-sand transition-all duration-200 hover:border-ember/40 hover:text-bone;
+    }
+
+    .category-tab.is-active {
+        @apply border-ember bg-ember font-bold text-ink;
+    }
+}
+
+/* Scroll reveal */
+.reveal,
+.reveal-left,
+.reveal-right,
+.reveal-scale {
+    opacity: 0;
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal {
+    transform: translateY(26px);
+}
+
+.reveal-left {
+    transform: translateX(-26px);
+}
+
+.reveal-right {
+    transform: translateX(26px);
+}
+
+.reveal-scale {
+    transform: scale(0.97);
+}
+
+.reveal.active,
+.reveal-left.active,
+.reveal-right.active,
+.reveal-scale.active {
+    opacity: 1;
+    transform: none;
+}
+
+.stagger-item {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stagger-item.active {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .reveal,
+    .reveal-left,
+    .reveal-right,
+    .reveal-scale,
+    .stagger-item {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
