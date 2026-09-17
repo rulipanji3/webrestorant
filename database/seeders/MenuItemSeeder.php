@@ -1,0 +1,36 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Category;
+use App\Models\MenuItem;
+use Illuminate\Database\Seeder;
+
+class MenuItemSeeder extends Seeder
+{
+    public function run(): void
+    {
+        $makanan = Category::create(['name' => 'Makanan', 'slug' => 'makanan']);
+        $minuman = Category::create(['name' => 'Minuman', 'slug' => 'minuman']);
+
+        $items = [
+            ['name' => 'Soto Sutri', 'category_id' => $makanan->id, 'description' => 'Soto khas Banyumas dengan kuah gurih, daging ayam suwir, tauge, dan sambal kacang.', 'price' => 15000, 'image_url' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDYAFh5bMylLyTMnH5elSUtSoMgP9Kiv-9chSMxbGhlBvpJqY3zisJEDjTBWv-7YUOEJ5-4D6fYWxcuEa-q7V1YacMkqDRwqUm-TKy_NJQV_Y6OscD-qWqtFbkh033D13D22UkSWpjwMBsWk44TBK5YtRb6Kj8Lohde7Nf1RodHxL2EdtxRfM2pLFK1dEMWQ7V2F7E1JfOfLizNUQErTBMlW-rB5IuOdCPKxWRO7miFptNzasRngVA0L5U2LS5Kg5g4lOSlNN4wNP6i'],
+            ['name' => 'Soto Ayam', 'category_id' => $makanan->id, 'description' => 'Soto ayam bening dengan irisan daging ayam, telur rebus, kentang, dan emping.', 'price' => 12000, 'image_url' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDYAFh5bMylLyTMnH5elSUtSoMgP9Kiv-9chSMxbGhlBvpJqY3zisJEDjTBWv-7YUOEJ5-4D6fYWxcuEa-q7V1YacMkqDRwqUm-TKy_NJQV_Y6OscD-qWqtFbkh033D13D22UkSWpjwMBsWk44TBK5YtRb6Kj8Lohde7Nf1RodHxL2EdtxRfM2pLFK1dEMWQ7V2F7E1JfOfLizNUQErTBMlW-rB5IuOdCPKxWRO7miFptNzasRngVA0L5U2LS5Kg5g4lOSlNN4wNP6i'],
+            ['name' => 'Rames', 'category_id' => $makanan->id, 'description' => 'Nasi rames lengkap dengan lauk pilihan, sayur, sambal, dan kerupuk.', 'price' => 12000, 'image_url' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDYAFh5bMylLyTMnH5elSUtSoMgP9Kiv-9chSMxbGhlBvpJqY3zisJEDjTBWv-7YUOEJ5-4D6fYWxcuEa-q7V1YacMkqDRwqUm-TKy_NJQV_Y6OscD-qWqtFbkh033D13D22UkSWpjwMBsWk44TBK5YtRb6Kj8Lohde7Nf1RodHxL2EdtxRfM2pLFK1dEMWQ7V2F7E1JfOfLizNUQErTBMlW-rB5IuOdCPKxWRO7miFptNzasRngVA0L5U2LS5Kg5g4lOSlNN4wNP6i'],
+            ['name' => 'Ayam Bakar', 'category_id' => $makanan->id, 'description' => 'Ayam bakar bumbu kecap khas Jawa dengan sambal terasi dan lalapan segar.', 'price' => 20000, 'image_url' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDYAFh5bMylLyTMnH5elSUtSoMgP9Kiv-9chSMxbGhlBvpJqY3zisJEDjTBWv-7YUOEJ5-4D6fYWxcuEa-q7V1YacMkqDRwqUm-TKy_NJQV_Y6OscD-qWqtFbkh033D13D22UkSWpjwMBsWk44TBK5YtRb6Kj8Lohde7Nf1RodHxL2EdtxRfM2pLFK1dEMWQ7V2F7E1JfOfLizNUQErTBMlW-rB5IuOdCPKxWRO7miFptNzasRngVA0L5U2LS5Kg5g4lOSlNN4wNP6i'],
+            ['name' => 'Ayam Goreng Kremes', 'category_id' => $makanan->id, 'description' => 'Ayam goreng dengan balutan kremes renyah, disajikan dengan sambal dan lalapan.', 'price' => 18000, 'image_url' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDYAFh5bMylLyTMnH5elSUtSoMgP9Kiv-9chSMxbGhlBvpJqY3zisJEDjTBWv-7YUOEJ5-4D6fYWxcuEa-q7V1YacMkqDRwqUm-TKy_NJQV_Y6OscD-qWqtFbkh033D13D22UkSWpjwMBsWk44TBK5YtRb6Kj8Lohde7Nf1RodHxL2EdtxRfM2pLFK1dEMWQ7V2F7E1JfOfLizNUQErTBMlW-rB5IuOdCPKxWRO7miFptNzasRngVA0L5U2LS5Kg5g4lOSlNN4wNP6i'],
+            ['name' => 'Es Teh Manis', 'category_id' => $minuman->id, 'description' => 'Teh manis segar dengan es batu, pelepas dahaga yang sempurna.', 'price' => 4000, 'image_url' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDYAFh5bMylLyTMnH5elSUtSoMgP9Kiv-9chSMxbGhlBvpJqY3zisJEDjTBWv-7YUOEJ5-4D6fYWxcuEa-q7V1YacMkqDRwqUm-TKy_NJQV_Y6OscD-qWqtFbkh033D13D22UkSWpjwMBsWk44TBK5YtRb6Kj8Lohde7Nf1RodHxL2EdtxRfM2pLFK1dEMWQ7V2F7E1JfOfLizNUQErTBMlW-rB5IuOdCPKxWRO7miFptNzasRngVA0L5U2LS5Kg5g4lOSlNN4wNP6i'],
+            ['name' => 'Teh Hangat Manis', 'category_id' => $minuman->id, 'description' => 'Teh manis hangat yang nyaman dinikmati kapan saja.', 'price' => 3000, 'image_url' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDYAFh5bMylLyTMnH5elSUtSoMgP9Kiv-9chSMxbGhlBvpJqY3zisJEDjTBWv-7YUOEJ5-4D6fYWxcuEa-q7V1YacMkqDRwqUm-TKy_NJQV_Y6OscD-qWqtFbkh033D13D22UkSWpjwMBsWk44TBK5YtRb6Kj8Lohde7Nf1RodHxL2EdtxRfM2pLFK1dEMWQ7V2F7E1JfOfLizNUQErTBMlW-rB5IuOdCPKxWRO7miFptNzasRngVA0L5U2LS5Kg5g4lOSlNN4wNP6i'],
+            ['name' => 'Es Jeruk', 'category_id' => $minuman->id, 'description' => 'Jus jeruk segar dengan es batu, kaya vitamin C.', 'price' => 5000, 'image_url' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDYAFh5bMylLyTMnH5elSUtSoMgP9Kiv-9chSMxbGhlBvpJqY3zisJEDjTBWv-7YUOEJ5-4D6fYWxcuEa-q7V1YacMkqDRwqUm-TKy_NJQV_Y6OscD-qWqtFbkh033D13D22UkSWpjwMBsWk44TBK5YtRb6Kj8Lohde7Nf1RodHxL2EdtxRfM2pLFK1dEMWQ7V2F7E1JfOfLizNUQErTBMlW-rB5IuOdCPKxWRO7miFptNzasRngVA0L5U2LS5Kg5g4lOSlNN4wNP6i'],
+            ['name' => 'Jeruk Hangat', 'category_id' => $minuman->id, 'description' => 'Jeruk hangat yang menyegarkan, cocok untuk menemani santapan Anda.', 'price' => 4000, 'image_url' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDYAFh5bMylLyTMnH5elSUtSoMgP9Kiv-9chSMxbGhlBvpJqY3zisJEDjTBWv-7YUOEJ5-4D6fYWxcuEa-q7V1YacMkqDRwqUm-TKy_NJQV_Y6OscD-qWqtFbkh033D13D22UkSWpjwMBsWk44TBK5YtRb6Kj8Lohde7Nf1RodHxL2EdtxRfM2pLFK1dEMWQ7V2F7E1JfOfLizNUQErTBMlW-rB5IuOdCPKxWRO7miFptNzasRngVA0L5U2LS5Kg5g4lOSlNN4wNP6i'],
+            ['name' => 'Es Teler', 'category_id' => $minuman->id, 'description' => 'Es teler dengan campuran alpukat, kelapa muda, nangka, dan susu kental manis.', 'price' => 12000, 'image_url' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDYAFh5bMylLyTMnH5elSUtSoMgP9Kiv-9chSMxbGhlBvpJqY3zisJEDjTBWv-7YUOEJ5-4D6fYWxcuEa-q7V1YacMkqDRwqUm-TKy_NJQV_Y6OscD-qWqtFbkh033D13D22UkSWpjwMBsWk44TBK5YtRb6Kj8Lohde7Nf1RodHxL2EdtxRfM2pLFK1dEMWQ7V2F7E1JfOfLizNUQErTBMlW-rB5IuOdCPKxWRO7miFptNzasRngVA0L5U2LS5Kg5g4lOSlNN4wNP6i'],
+            ['name' => 'Es Duren', 'category_id' => $minuman->id, 'description' => 'Es durian segar dengan daging buah durian asli dan campuran susu.', 'price' => 15000, 'image_url' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDYAFh5bMylLyTMnH5elSUtSoMgP9Kiv-9chSMxbGhlBvpJqY3zisJEDjTBWv-7YUOEJ5-4D6fYWxcuEa-q7V1YacMkqDRwqUm-TKy_NJQV_Y6OscD-qWqtFbkh033D13D22UkSWpjwMBsWk44TBK5YtRb6Kj8Lohde7Nf1RodHxL2EdtxRfM2pLFK1dEMWQ7V2F7E1JfOfLizNUQErTBMlW-rB5IuOdCPKxWRO7miFptNzasRngVA0L5U2LS5Kg5g4lOSlNN4wNP6i'],
+            ['name' => 'Es Hompimpa', 'category_id' => $minuman->id, 'description' => 'Minuman khas dengan campuran berbagai buah dan susu, segar dan unik.', 'price' => 10000, 'image_url' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDYAFh5bMylLyTMnH5elSUtSoMgP9Kiv-9chSMxbGhlBvpJqY3zisJEDjTBWv-7YUOEJ5-4D6fYWxcuEa-q7V1YacMkqDRwqUm-TKy_NJQV_Y6OscD-qWqtFbkh033D13D22UkSWpjwMBsWk44TBK5YtRb6Kj8Lohde7Nf1RodHxL2EdtxRfM2pLFK1dEMWQ7V2F7E1JfOfLizNUQErTBMlW-rB5IuOdCPKxWRO7miFptNzasRngVA0L5U2LS5Kg5g4lOSlNN4wNP6i'],
+            ['name' => 'Es Kacang Ijo', 'category_id' => $minuman->id, 'description' => 'Es kacang hijau dengan santan dan susu kental manis, segar dan mengenyangkan.', 'price' => 10000, 'image_url' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDYAFh5bMylLyTMnH5elSUtSoMgP9Kiv-9chSMxbGhlBvpJqY3zisJEDjTBWv-7YUOEJ5-4D6fYWxcuEa-q7V1YacMkqDRwqUm-TKy_NJQV_Y6OscD-qWqtFbkh033D13D22UkSWpjwMBsWk44TBK5YtRb6Kj8Lohde7Nf1RodHxL2EdtxRfM2pLFK1dEMWQ7V2F7E1JfOfLizNUQErTBMlW-rB5IuOdCPKxWRO7miFptNzasRngVA0L5U2LS5Kg5g4lOSlNN4wNP6i'],
+        ];
+
+        foreach ($items as $item) {
+            MenuItem::create($item);
+        }
+    }
+}

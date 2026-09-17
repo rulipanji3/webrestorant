@@ -1,0 +1,149 @@
+@theme {
+    --font-sans: 'Plus Jakarta Sans', 'Manrope', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-display: 'Playfair Display', 'Outfit', serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+    /* Warm Culinary Palette: warm cream + crisp white surfaces + authentic terracotta & spice */
+    --color-ink: #FAF7F2;          /* Main warm ivory body background */
+    --color-coal: #FFFFFF;         /* Pure white section / card background */
+    --color-coal-2: #FFFFFF;       /* Pure white modal / panel background */
+    --color-coal-3: #F3ECE1;       /* Soft sand pill / secondary container */
+    --color-line: #E8DED1;         /* Delicate warm border */
+    --color-bone: #231913;         /* Deep roasted espresso text (primary) */
+    --color-sand: #63554A;         /* Warm taupe / earthy text (secondary) */
+    --color-dust: #8C7C70;         /* Muted warm hazelnut caption text */
+    --color-ember: #C84A22;        /* Rich warm terracotta (primary brand) */
+    --color-ember-600: #AB3B17;    /* Deep roasted terracotta hover */
+    --color-ember-deep: #8E2E10;   /* Deep spice */
+    --color-wood: #221610;         /* Deep dark teak / walnut for grounded contrast */
+    --color-wood-2: #2E1E16;
+    --color-herb: #247A38;         /* Fresh pandan/kemangi green */
+    --color-herb-soft: #EAF6ED;    /* Soft fresh herbal tint */
+    --color-amber-spice: #D97706;  /* Warm golden turmeric / star rating */
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        background-color: var(--color-ink);
+        color: var(--color-bone);
+        font-family: var(--font-sans);
+        -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+        background: var(--color-ember);
+        color: #FFFFFF;
+    }
+
+    :focus-visible {
+        outline: 2px solid var(--color-ember);
+        outline-offset: 2px;
+    }
+}
+
+@layer components {
+    .eyebrow {
+        @apply font-mono text-[11px] uppercase tracking-[0.22em] text-ember font-bold;
+    }
+
+    .btn-ember {
+        @apply inline-flex items-center justify-center gap-2 rounded-full bg-ember px-7 py-3.5 text-sm font-bold text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-ember-600 active:scale-[0.98] shadow-md shadow-ember/25;
+    }
+
+    .btn-ghost {
+        @apply inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white px-7 py-3.5 text-sm font-semibold text-bone transition-all duration-200 hover:border-ember/60 hover:text-ember hover:bg-white shadow-xs active:scale-[0.98];
+    }
+
+    .panel {
+        @apply rounded-2xl border border-line bg-white shadow-sm;
+    }
+
+    .card-menu {
+        @apply flex flex-col overflow-hidden rounded-2xl border border-line bg-white transition-all duration-300 hover:border-ember/40 hover:-translate-y-1 hover:shadow-xl;
+        box-shadow: 0 4px 20px -4px rgba(67, 34, 18, 0.06);
+    }
+
+    .chip {
+        @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-sand shadow-2xs;
+    }
+
+    .field-label {
+        @apply mb-2 block font-mono text-[11px] uppercase tracking-[0.18em] text-sand font-semibold;
+    }
+
+    .field {
+        @apply w-full rounded-xl border border-line bg-white px-4 py-3 text-bone placeholder:text-dust transition-all duration-200 focus:border-ember focus:outline-none focus:ring-2 focus:ring-ember/20 shadow-2xs;
+    }
+
+    .category-tab {
+        @apply inline-flex items-center rounded-full border border-line bg-white px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.14em] text-sand transition-all duration-200 hover:border-ember/40 hover:text-bone shadow-2xs cursor-pointer;
+    }
+
+    .category-tab.is-active {
+        @apply border-ember bg-ember font-bold text-white shadow-md shadow-ember/20;
+    }
+}
+
+/* Scroll reveal */
+.reveal,
+.reveal-left,
+.reveal-right,
+.reveal-scale {
+    opacity: 0;
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal {
+    transform: translateY(26px);
+}
+
+.reveal-left {
+    transform: translateX(-26px);
+}
+
+.reveal-right {
+    transform: translateX(26px);
+}
+
+.reveal-scale {
+    transform: scale(0.97);
+}
+
+.reveal.active,
+.reveal-left.active,
+.reveal-right.active,
+.reveal-scale.active {
+    opacity: 1;
+    transform: none;
+}
+
+.stagger-item {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stagger-item.active {
+    opacity: 1;
+    transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .reveal,
+    .reveal-left,
+    .reveal-right,
+    .reveal-scale,
+    .stagger-item {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
