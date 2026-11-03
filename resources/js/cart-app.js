@@ -39,6 +39,7 @@ export function initCartApp() {
     const checkoutName = document.querySelector('#checkout-name');
     const checkoutPhone = document.querySelector('#checkout-phone');
     const checkoutService = document.querySelector('#checkout-service');
+    const checkoutPayment = document.querySelector('#checkout-payment');
     const orderConfirmationModal = document.querySelector('#order-confirmation-modal');
     const orderConfirmationId = document.querySelector('#order-confirmation-id');
     const orderConfirmationItems = document.querySelector('#order-confirmation-items');
@@ -47,6 +48,7 @@ export function initCartApp() {
     const orderCustomer = document.querySelector('#order-confirmation-customer');
     const orderCustomerPhone = document.querySelector('#order-confirmation-phone');
     const orderService = document.querySelector('#order-confirmation-service');
+    const orderTrackLink = document.querySelector('#order-track-link');
     const orderBarcodeContainer = document.querySelector('#order-barcode-container');
     const orderBarcodeImg = document.querySelector('#order-barcode-img');
     const orderConfirmationClose = document.querySelectorAll('#order-confirmation-close, #order-confirmation-close-2');
@@ -368,6 +370,7 @@ export function initCartApp() {
             }
             const customerPhone = checkoutPhone ? checkoutPhone.value.trim() : null;
             const serviceType = checkoutService ? checkoutService.value : 'dine_in';
+            const paymentMethod = checkoutPayment ? checkoutPayment.value : 'cash';
             try {
                 const tokenEl = document.querySelector('meta[name="csrf-token"]');
                 const csrf = tokenEl ? tokenEl.getAttribute('content') : '';
@@ -383,7 +386,8 @@ export function initCartApp() {
                         total: getCartTotal(),
                         customer_name: customerName,
                         customer_phone: customerPhone,
-                        service_type: serviceType
+                        service_type: serviceType,
+                        payment_method: paymentMethod
                     })
                 });
                 const json = await resp.json();
@@ -395,7 +399,8 @@ export function initCartApp() {
                         total: getCartTotal(),
                         customer_name: customerName,
                         customer_phone: customerPhone,
-                        service_type: serviceLabel
+                        service_type: serviceLabel,
+                        payment_method: paymentMethod
                     };
                     clearCart();
                     closeCheckoutModal();
@@ -422,6 +427,9 @@ export function initCartApp() {
         if (orderService) orderService.textContent = order.service_type || '-';
         orderConfirmationId.textContent = '#' + (order.id || order.order_id || '');
         if (orderRefCode) orderRefCode.textContent = refCode || '-';
+        if (orderTrackLink && refCode) {
+            orderTrackLink.setAttribute('href', '/order/track?ref=' + encodeURIComponent(refCode));
+        }
         if (orderBarcodeContainer && orderBarcodeImg) {
             if (barcodeUrl) {
                 orderBarcodeImg.src = barcodeUrl;

@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     @vite(['resources/css/order.css', 'resources/js/order.js'])
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="whatsapp-number" content="{{ env('WHATSAPP_NUMBER', '6285810405551') }}">
+    <meta name="whatsapp-number" content="{{ config('services.whatsapp.number', '6285810405551') }}">
 </head>
 <body class="selection:bg-ember selection:text-white bg-[#FAF7F2] text-bone font-sans antialiased">
 <header id="site-header" class="fixed inset-x-0 top-0 z-50 border-b border-line/70 bg-[#FAF7F2]/90 backdrop-blur-md transition-all duration-300">
@@ -23,6 +23,7 @@
             <span class="font-display text-xl font-bold tracking-tight text-bone">Mba <span class="text-ember">Neni</span></span>
         </a>
         <div class="flex items-center gap-4">
+            <a href="/order/track" class="hidden font-mono text-[12px] uppercase tracking-[0.16em] text-sand font-semibold transition-colors hover:text-ember sm:inline">Lacak Pesanan</a>
             <a href="/booking" class="hidden font-mono text-[12px] uppercase tracking-[0.16em] text-sand font-semibold transition-colors hover:text-ember md:inline">Booking</a>
             <div class="relative">
                 <button id="cart-toggle" class="relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white text-bone shadow-2xs transition-all hover:border-ember/60 hover:text-ember cursor-pointer" aria-label="Buka keranjang">
@@ -187,7 +188,7 @@
         </div>
         <div class="mt-4 grid grid-cols-1 gap-2.5">
             <button id="cart-checkout" class="btn-ember w-full py-3! text-xs uppercase tracking-wider cursor-pointer">Lanjut ke Pembayaran</button>
-            <a id="cart-whatsapp" href="#" data-whatsapp-phone="{{ env('WHATSAPP_NUMBER', '6285810405551') }}" class="btn-ghost w-full py-3! text-xs uppercase tracking-wider !text-herb !border-herb/30 hover:!bg-herb-soft">
+            <a id="cart-whatsapp" href="#" data-whatsapp-phone="{{ config('services.whatsapp.number', '6285810405551') }}" class="btn-ghost w-full py-3! text-xs uppercase tracking-wider !text-herb !border-herb/30 hover:!bg-herb-soft">
                 <span class="material-symbols-outlined" style="font-size:18px">chat</span> Pesan via WhatsApp
             </a>
         </div>
@@ -215,13 +216,23 @@
                 <label for="checkout-phone" class="field-label">No. Telepon / WhatsApp</label>
                 <input id="checkout-phone" type="tel" placeholder="Contoh: 08123456789" class="field">
             </div>
-            <div>
-                <label for="checkout-service" class="field-label">Metode Layanan</label>
-                <select id="checkout-service" class="field">
-                    <option value="dine_in">Makan di Tempat (Dine-in)</option>
-                    <option value="takeaway">Bawa Pulang (Takeaway)</option>
-                    <option value="delivery">Pesan Antar (Delivery)</option>
-                </select>
+            <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div>
+                    <label for="checkout-service" class="field-label">Metode Layanan</label>
+                    <select id="checkout-service" class="field">
+                        <option value="dine_in">Makan di Tempat (Dine-in)</option>
+                        <option value="takeaway">Bawa Pulang (Takeaway)</option>
+                        <option value="delivery">Pesan Antar (Delivery)</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="checkout-payment" class="field-label">Metode Pembayaran</label>
+                    <select id="checkout-payment" class="field">
+                        <option value="cash">Tunai / Bayar di Kasir</option>
+                        <option value="qris">QRIS Instant</option>
+                        <option value="transfer">Transfer Bank (BRI)</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <span class="field-label">Ringkasan Pesanan</span>
@@ -288,10 +299,13 @@
             <span class="font-mono text-xs uppercase tracking-wider text-sand font-semibold">Total Bayar</span>
             <span id="order-confirmation-total" class="font-mono text-xl font-extrabold text-ember">Rp 0</span>
         </div>
-        <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
             <button id="order-confirmation-copy" class="btn-ember w-full py-3! uppercase tracking-wider text-xs cursor-pointer">
                 <span class="material-symbols-outlined text-base">print</span> Cetak Struk
             </button>
+            <a id="order-track-link" href="/order/track" class="btn-ghost w-full py-3! uppercase tracking-wider text-xs text-center">
+                Lacak Status
+            </a>
             <button id="order-confirmation-close-2" class="btn-ghost w-full py-3! uppercase tracking-wider text-xs cursor-pointer">Selesai</button>
         </div>
     </div>

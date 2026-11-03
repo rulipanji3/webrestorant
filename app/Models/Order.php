@@ -9,7 +9,15 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['total', 'status', 'reference_code', 'customer_name', 'service_type', 'customer_phone'];
+    protected $fillable = [
+        'total',
+        'status',
+        'reference_code',
+        'customer_name',
+        'service_type',
+        'payment_method',
+        'customer_phone',
+    ];
 
     public function items()
     {
@@ -22,6 +30,25 @@ class Order extends Model
             'takeaway' => 'Takeaway',
             'delivery' => 'Delivery',
             default => 'Dine-in',
+        };
+    }
+
+    public static function statusLabel(?string $status): string
+    {
+        return match ($status) {
+            'processing' => 'Sedang Dimasak',
+            'completed' => 'Selesai / Lunas',
+            'cancelled' => 'Dibatalkan',
+            default => 'Menunggu Diproses',
+        };
+    }
+
+    public static function paymentLabel(?string $method): string
+    {
+        return match ($method) {
+            'qris' => 'QRIS',
+            'transfer' => 'Transfer Bank',
+            default => 'Tunai / Kasir',
         };
     }
 }

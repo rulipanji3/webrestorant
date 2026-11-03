@@ -35,4 +35,19 @@ return [
         ],
     ],
 
+    'admin' => [
+        'user' => env('ADMIN_USER', 'admin'),
+        'pass' => env('ADMIN_PASS', 'secret'),
+    ],
+
+    'whatsapp' => [
+        'number' => env('WHATSAPP_NUMBER', '6285810405551'),
+    ],
+
+    'booking' => [
+        'max_guests_per_slot' => (int) env('MAX_GUESTS_PER_SLOT', 40),
+    ],
+
+    'order_notification_email' => env('ORDER_NOTIFICATION_EMAIL'),
+
 ];

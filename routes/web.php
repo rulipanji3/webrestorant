@@ -5,6 +5,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\MenuItemController;
+use App\Http\Controllers\ReportController;
 use App\Http\Middleware\AdminAuth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +20,8 @@ Route::get('/warung-makan-mba-neni', function () {
 Route::get('/order', function () {
     return view('order');
 });
+
+Route::get('/order/track', [CheckoutController::class, 'track'])->name('order.track');
 
 Route::get('/booking', function () {
     return view('booking');
@@ -38,8 +41,11 @@ Route::post('/admin/logout', [AuthController::class, 'logout'])->middleware('adm
 Route::middleware([AdminAuth::class])->group(function () {
     Route::get('/admin', fn () => redirect()->route('admin.orders.index'))->name('admin.dashboard');
     Route::get('/admin/orders', [CheckoutController::class, 'index'])->name('admin.orders.index');
+    Route::get('/admin/orders/poll', [CheckoutController::class, 'poll'])->name('admin.orders.poll');
+    Route::put('/admin/orders/{order}/status', [CheckoutController::class, 'updateStatus'])->name('admin.orders.status');
     Route::delete('/admin/orders', [CheckoutController::class, 'destroyAll'])->name('admin.orders.destroyAll');
     Route::delete('/admin/orders/{order}', [CheckoutController::class, 'destroy'])->name('admin.orders.destroy');
+
     Route::get('/admin/menu', [MenuItemController::class, 'index'])->name('admin.menu.index');
     Route::get('/admin/menu/availability', [MenuItemController::class, 'availability'])->name('admin.menu.availability');
     Route::post('/admin/menu', [MenuItemController::class, 'store'])->name('admin.menu.store');
@@ -47,10 +53,15 @@ Route::middleware([AdminAuth::class])->group(function () {
     Route::put('/admin/menu/{menuItem}', [MenuItemController::class, 'update'])->name('admin.menu.update');
     Route::delete('/admin/menu/{menuItem}', [MenuItemController::class, 'destroy'])->name('admin.menu.destroy');
     Route::put('/admin/menu/{menuItem}/toggle', [MenuItemController::class, 'toggleAvailability'])->name('admin.menu.toggle');
+
     Route::get('/admin/categories', [CategoryController::class, 'index'])->name('admin.categories.index');
     Route::post('/admin/categories', [CategoryController::class, 'store'])->name('admin.categories.store');
     Route::put('/admin/categories/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
     Route::delete('/admin/categories/{category}', [CategoryController::class, 'destroy'])->name('admin.categories.destroy');
+
     Route::get('/admin/bookings', [BookingController::class, 'index'])->name('admin.bookings.index');
+    Route::put('/admin/bookings/{booking}/status', [BookingController::class, 'updateStatus'])->name('admin.bookings.status');
     Route::delete('/admin/bookings/{booking}', [BookingController::class, 'destroy'])->name('admin.bookings.destroy');
+
+    Route::get('/admin/reports', [ReportController::class, 'index'])->name('admin.reports.index');
 });

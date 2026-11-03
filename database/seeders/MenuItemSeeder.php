@@ -10,8 +10,8 @@ class MenuItemSeeder extends Seeder
 {
     public function run(): void
     {
-        $makanan = Category::create(['name' => 'Makanan', 'slug' => 'makanan']);
-        $minuman = Category::create(['name' => 'Minuman', 'slug' => 'minuman']);
+        $makanan = Category::firstOrCreate(['slug' => 'makanan'], ['name' => 'Makanan']);
+        $minuman = Category::firstOrCreate(['slug' => 'minuman'], ['name' => 'Minuman']);
 
         $items = [
             ['name' => 'Soto Sutri', 'category_id' => $makanan->id, 'description' => 'Soto khas Banyumas dengan kuah gurih, daging ayam suwir, tauge, dan sambal kacang.', 'price' => 15000, 'image_url' => 'https://lh3.googleusercontent.com/aida-public/AB6AXuDYAFh5bMylLyTMnH5elSUtSoMgP9Kiv-9chSMxbGhlBvpJqY3zisJEDjTBWv-7YUOEJ5-4D6fYWxcuEa-q7V1YacMkqDRwqUm-TKy_NJQV_Y6OscD-qWqtFbkh033D13D22UkSWpjwMBsWk44TBK5YtRb6Kj8Lohde7Nf1RodHxL2EdtxRfM2pLFK1dEMWQ7V2F7E1JfOfLizNUQErTBMlW-rB5IuOdCPKxWRO7miFptNzasRngVA0L5U2LS5Kg5g4lOSlNN4wNP6i'],
@@ -30,7 +30,7 @@ class MenuItemSeeder extends Seeder
         ];
 
         foreach ($items as $item) {
-            MenuItem::create($item);
+            MenuItem::firstOrCreate(['name' => $item['name']], $item);
         }
     }
 }

@@ -337,6 +337,7 @@
                 <a href="{{ route('admin.menu.availability') }}" class="nav-link"><span class="material-symbols-outlined">toggle_on</span>Ketersediaan</a>
                 <a href="{{ route('admin.categories.index') }}" class="nav-link"><span class="material-symbols-outlined">category</span>Kategori</a>
                 <a href="{{ route('admin.bookings.index') }}" class="nav-link"><span class="material-symbols-outlined">event_available</span>Booking</a>
+                <a href="{{ route('admin.reports.index') }}" class="nav-link"><span class="material-symbols-outlined">analytics</span>Laporan</a>
             </div>
 
             <div class="topbar-right">

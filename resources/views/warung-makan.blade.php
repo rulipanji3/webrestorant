@@ -49,7 +49,7 @@
     </script>
     @vite(['resources/css/warung-makan.css', 'resources/js/warung-makan.js'])
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="whatsapp-number" content="{{ env('WHATSAPP_NUMBER', '6285810405551') }}">
+    <meta name="whatsapp-number" content="{{ config('services.whatsapp.number', '6285810405551') }}">
 </head>
 <body class="selection:bg-ember selection:text-white bg-[#FAF7F2] text-bone font-sans antialiased">
 <header id="site-header" class="fixed inset-x-0 top-0 z-50 border-b border-line/70 bg-[#FAF7F2]/90 backdrop-blur-md transition-all duration-300">
@@ -61,12 +61,15 @@
             <span class="font-display text-xl font-bold tracking-tight text-bone">Mba <span class="text-ember">Neni</span></span>
         </a>
 
-        <div class="hidden items-center gap-8 lg:flex">
+        <div class="hidden items-center gap-7 lg:flex">
             <a class="font-mono text-[12px] uppercase tracking-[0.16em] text-sand font-semibold transition-colors hover:text-ember" href="#menu">Menu</a>
             <a class="font-mono text-[12px] uppercase tracking-[0.16em] text-sand font-semibold transition-colors hover:text-ember" href="#about">Tentang</a>
             <a class="font-mono text-[12px] uppercase tracking-[0.16em] text-sand font-semibold transition-colors hover:text-ember" href="#reviews">Ulasan</a>
             <a class="font-mono text-[12px] uppercase tracking-[0.16em] text-sand font-semibold transition-colors hover:text-ember" href="#gallery">Galeri</a>
             <a class="font-mono text-[12px] uppercase tracking-[0.16em] text-sand font-semibold transition-colors hover:text-ember" href="#location">Lokasi</a>
+            <a class="font-mono text-[12px] uppercase tracking-[0.16em] text-ember font-bold transition-colors hover:text-ember-600 flex items-center gap-1" href="/order/track">
+                <span class="material-symbols-outlined text-[15px]">local_shipping</span> Lacak Pesanan
+            </a>
         </div>
 
         <div class="flex items-center gap-3">
@@ -81,7 +84,7 @@
                 </button>
                 <span id="cart-message" class="absolute right-0 top-12 z-50 hidden whitespace-nowrap rounded-full border border-line bg-white px-4 py-2 text-xs text-bone shadow-xl"></span>
             </div>
-            <a href="/order" class="hidden rounded-full bg-ember px-5 py-2.5 font-mono text-[12px] font-bold uppercase tracking-[0.12em] text-white transition-all hover:bg-ember-600 shadow-sm shadow-ember/20 md:inline-flex">Order Now</a>
+            <a href="/order" class="hidden rounded-full bg-ember px-5 py-2.5 font-mono text-[12px] font-bold uppercase tracking-[0.12em] text-white transition-all hover:bg-ember-600 shadow-sm shadow-ember/20 md:inline-flex">Pesan Online</a>
             <button id="mobile-menu-btn" class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-line bg-white text-bone shadow-2xs lg:hidden cursor-pointer" aria-label="Menu navigasi">
                 <span class="material-symbols-outlined">menu</span>
             </button>
@@ -95,8 +98,9 @@
             <a class="rounded-xl px-4 py-2.5 font-mono text-[13px] font-semibold uppercase tracking-[0.16em] text-sand hover:bg-white hover:text-ember" href="#reviews">Ulasan</a>
             <a class="rounded-xl px-4 py-2.5 font-mono text-[13px] font-semibold uppercase tracking-[0.16em] text-sand hover:bg-white hover:text-ember" href="#gallery">Galeri</a>
             <a class="rounded-xl px-4 py-2.5 font-mono text-[13px] font-semibold uppercase tracking-[0.16em] text-sand hover:bg-white hover:text-ember" href="#location">Lokasi</a>
+            <a class="rounded-xl px-4 py-2.5 font-mono text-[13px] font-bold uppercase tracking-[0.16em] text-ember hover:bg-white" href="/order/track">Lacak Pesanan</a>
             <div class="mt-3 border-t border-line/60 pt-3">
-                <a href="/order" class="btn-ember w-full">Order Now</a>
+                <a href="/order" class="btn-ember w-full">Pesan Online</a>
             </div>
         </div>
     </div>
@@ -220,7 +224,7 @@
                 <span class="inline-flex items-center gap-1.5 rounded-full bg-ember/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-ember">
                     <span class="material-symbols-outlined text-sm">history_edu</span> Cerita Dapur Kami
                 </span>
-                <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-bone md:text-4xl">About Warung Makan Mba Neni</h2>
+                <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-bone md:text-4xl">Tentang Warung Makan Mba Neni</h2>
                 <p class="mt-5 leading-relaxed text-sand text-base">
                     Berdiri sejak 1998 di Purwokerto, Warung Makan Mba Neni merawat warisan kuliner tradisional Jawa dengan sepenuh hati. Setiap racikan bumbu diolah dengan resep turun-temurun, menghadirkan rasa gurih, sedap, dan memikat yang khas Banyumasan.
                 </p>
@@ -251,9 +255,9 @@
             <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-6">
                 <div>
                     <span class="inline-flex items-center gap-1.5 rounded-full bg-ember/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-ember">
-                        <span class="material-symbols-outlined text-sm">restaurant_menu</span> Menu Pilihan
+                        <span class="material-symbols-outlined text-sm">restaurant_menu</span> Menu Pilihan · Our Signature Menu
                     </span>
-                    <h2 class="mt-3 font-display text-3xl font-extrabold tracking-tight text-bone md:text-4xl">Our Signature Menu</h2>
+                    <h2 class="mt-3 font-display text-3xl font-extrabold tracking-tight text-bone md:text-4xl">Hidangan Andalan Kami</h2>
                     <p class="mt-3 max-w-xl text-sand text-base">Nikmati hidangan andalan kami, dimasak dengan bumbu rempah tradisional dan disajikan hangat setiap saat.</p>
                 </div>
             </div>
@@ -367,7 +371,7 @@
                     <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1">star_half</span>
                     <span class="ml-2 font-bold text-bone text-base">4.6 / 5.0</span>
                 </div>
-                <h2 class="font-display text-3xl font-extrabold tracking-tight text-bone md:text-4xl">4.6 Rating from 2,436+ Guests</h2>
+                <h2 class="font-display text-3xl font-extrabold tracking-tight text-bone md:text-4xl">Rating 4.6 dari 2.436+ Pelanggan</h2>
                 <p class="mt-3 text-sand text-base">Pengalaman nyata pelanggan setia yang menyukai kehangatan rasa masakan khas Warung Makan Mba Neni.</p>
             </div>
 
@@ -381,13 +385,13 @@
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1">star</span>
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1">star</span>
                         </div>
-                        <p class="font-display text-lg font-semibold leading-relaxed text-bone">&ldquo;The best Nasi Campur in Purwokerto. It tastes just like my grandmother's cooking. The service is fast even at 2 AM!&rdquo;</p>
+                        <p class="font-display text-lg font-semibold leading-relaxed text-bone">&ldquo;Nasi Rames dan Soto Sokarajanya juara di Purwokerto! Rasanya persis masakan rumah yang hangat. Pelayanannya tetap ramah dan cepat meski jam 2 pagi!&rdquo;</p>
                     </div>
                     <div class="mt-6 flex items-center gap-3 border-t border-line/60 pt-4">
                         <span class="flex h-10 w-10 items-center justify-center rounded-full bg-ember/15 font-mono text-xs font-bold text-ember">BS</span>
                         <div>
                             <div class="text-sm font-bold text-bone">Budi Santoso</div>
-                            <div class="font-mono text-[10px] uppercase tracking-[0.16em] text-sand font-semibold">Local Guide</div>
+                            <div class="font-mono text-[10px] uppercase tracking-[0.16em] text-sand font-semibold">Local Guide Purwokerto</div>
                         </div>
                     </div>
                 </div>
@@ -400,13 +404,13 @@
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1">star</span>
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1">star</span>
                         </div>
-                        <p class="font-display text-lg font-semibold leading-relaxed text-bone">&ldquo;Incredible value for money. The Ayam Bakar is perfectly seasoned and the sambal has the right amount of kick. Highly recommended!&rdquo;</p>
+                        <p class="font-display text-lg font-semibold leading-relaxed text-bone">&ldquo;Harganya sangat bersahabat tapi porsinya melimpah. Ayam Bakar Madunya meresap sampai ke tulang dan sambal terasinya nampol banget!&rdquo;</p>
                     </div>
                     <div class="mt-6 flex items-center gap-3 border-t border-line/60 pt-4">
                         <span class="flex h-10 w-10 items-center justify-center rounded-full bg-ember/15 font-mono text-xs font-bold text-ember">SA</span>
                         <div>
                             <div class="text-sm font-bold text-bone">Siti Aminah</div>
-                            <div class="font-mono text-[10px] uppercase tracking-[0.16em] text-sand font-semibold">Food Enthusiast</div>
+                            <div class="font-mono text-[10px] uppercase tracking-[0.16em] text-sand font-semibold">Pecinta Kuliner</div>
                         </div>
                     </div>
                 </div>
@@ -419,13 +423,13 @@
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1">star</span>
                             <span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1">star</span>
                         </div>
-                        <p class="font-display text-lg font-semibold leading-relaxed text-bone">&ldquo;Always my go-to place after a long shift. Clean, professional, and consistently delicious. Best Javanese restaurant in town.&rdquo;</p>
+                        <p class="font-display text-lg font-semibold leading-relaxed text-bone">&ldquo;Selalu jadi tempat langganan pulang kerja malam. Tempatnya bersih, mendoannya selalu digoreng dadakan panas-panas. Terbaik di Banyumas!&rdquo;</p>
                     </div>
                     <div class="mt-6 flex items-center gap-3 border-t border-line/60 pt-4">
                         <span class="flex h-10 w-10 items-center justify-center rounded-full bg-ember/15 font-mono text-xs font-bold text-ember">AP</span>
                         <div>
                             <div class="text-sm font-bold text-bone">Andi Pratama</div>
-                            <div class="font-mono text-[10px] uppercase tracking-[0.16em] text-sand font-semibold">Night Worker</div>
+                            <div class="font-mono text-[10px] uppercase tracking-[0.16em] text-sand font-semibold">Pelanggan Setia</div>
                         </div>
                     </div>
                 </div>
@@ -442,13 +446,13 @@
                     <span class="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-amber-400">
                         <span class="material-symbols-outlined text-sm">room_service</span> Layanan Fleksibel
                     </span>
-                    <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-white md:text-4xl">Dine-In, Takeaway, or Delivered</h2>
-                    <p class="mt-4 max-w-md text-stone-300 leading-relaxed text-base">Nikmati sajian khas Mba Neni di mana saja. Layanan pesan antar cepat, bungkus siap santap, serta ruang dine-in yang nyaman di Purwokerto.</p>
+                    <h2 class="mt-4 font-display text-3xl font-extrabold tracking-tight text-white md:text-4xl">Makan di Tempat, Bungkus, atau Diantar</h2>
+                    <p class="mt-4 max-w-md text-stone-300 leading-relaxed text-base">Nikmati sajian khas Mba Neni di mana saja. Layanan pesan antar cepat, bungkus siap santap, serta ruang makan keluarga yang nyaman di Purwokerto.</p>
                     <div class="mt-8 flex flex-wrap gap-4">
                         <a href="tel:+622811234567" class="btn-ember">
                             <span class="material-symbols-outlined" style="font-size:18px">call</span> Telepon Kami
                         </a>
-                        <a href="/booking" class="btn-ghost !bg-white/10 !border-white/20 !text-white hover:!bg-white/20">Book a Table</a>
+                        <a href="/booking" class="btn-ghost !bg-white/10 !border-white/20 !text-white hover:!bg-white/20">Reservasi Meja</a>
                     </div>
                 </div>
                 <div class="stagger-grid grid grid-cols-3 gap-3 md:gap-4">
@@ -479,7 +483,7 @@
                 <span class="inline-flex items-center gap-1.5 rounded-full bg-ember/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-ember">
                     <span class="material-symbols-outlined text-sm">photo_library</span> Suasana Warung
                 </span>
-                <h2 class="mt-3 font-display text-3xl font-extrabold tracking-tight text-bone md:text-4xl">Gallery &amp; Atmosphere</h2>
+                <h2 class="mt-3 font-display text-3xl font-extrabold tracking-tight text-bone md:text-4xl">Galeri &amp; Suasana</h2>
                 <p class="mt-3 text-sand text-base">Melihat lebih dekat kehangatan dapur dan suasana santap di Warung Makan Mba Neni.</p>
             </div>
             <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-3 reveal">
@@ -503,7 +507,7 @@
                 <span class="inline-flex items-center gap-1.5 rounded-full bg-ember/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-ember">
                     <span class="material-symbols-outlined text-sm">pin_drop</span> Lokasi Warung
                 </span>
-                <h2 class="mt-3 font-display text-3xl font-extrabold tracking-tight text-bone md:text-4xl">Visit Us</h2>
+                <h2 class="mt-3 font-display text-3xl font-extrabold tracking-tight text-bone md:text-4xl">Kunjungi Warung Kami</h2>
                 <div class="mt-8 space-y-4">
                     <div class="flex items-start gap-4 rounded-2xl p-4 bg-white border border-line/70 shadow-2xs">
                         <div class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-ember/10 text-ember">
@@ -559,7 +563,7 @@
             <p class="mt-5 max-w-sm text-sm leading-relaxed text-stone-300">
                 Menghadirkan kehangatan dan cita rasa autentik masakan Jawa langsung ke meja Anda. Tempat santap favorit 24 jam di Purwokerto.
             </p>
-            <a href="https://wa.me/{{ env('WHATSAPP_NUMBER', '6285810405551') }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full bg-white/10 hover:bg-white/15 px-4 py-2.5 text-xs font-semibold text-emerald-300 border border-emerald-500/30 mt-6 transition-colors shadow-2xs">
+            <a href="https://wa.me/{{ config('services.whatsapp.number', '6285810405551') }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full bg-white/10 hover:bg-white/15 px-4 py-2.5 text-xs font-semibold text-emerald-300 border border-emerald-500/30 mt-6 transition-colors shadow-2xs">
                 <span class="material-symbols-outlined text-base">chat</span>
                 Hubungi via WhatsApp
             </a>
@@ -570,8 +574,9 @@
                 <li><a class="text-stone-300 transition-colors hover:text-white" href="#menu">Daftar Menu</a></li>
                 <li><a class="text-stone-300 transition-colors hover:text-white" href="#about">Tentang Warung</a></li>
                 <li><a class="text-stone-300 transition-colors hover:text-white" href="#reviews">Ulasan Pelanggan</a></li>
-                <li><a class="text-stone-300 transition-colors hover:text-white" href="/booking">Booking Meja</a></li>
+                <li><a class="text-stone-300 transition-colors hover:text-white" href="/booking">Reservasi Meja</a></li>
                 <li><a class="text-stone-300 transition-colors hover:text-white" href="/order">Pesan Online</a></li>
+                <li><a class="text-amber-400 font-semibold transition-colors hover:text-white" href="/order/track">Lacak Status Pesanan</a></li>
             </ul>
         </div>
         <div>
@@ -588,7 +593,7 @@
         <div class="mx-auto flex w-full max-w-[1400px] flex-col items-center justify-between gap-3 px-4 py-6 md:flex-row md:px-8">
             <p class="font-mono text-[11px] uppercase tracking-[0.14em] text-stone-400">&copy; {{ date('Y') }} Warung Makan Mba Neni. Hak Cipta Dilindungi.</p>
             <p class="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-stone-400">
-                Authentic Javanese Heritage · Purwokerto
+                Warisan Kuliner Jawa Asli · Purwokerto
                 <span class="material-symbols-outlined text-ember text-sm" style="font-variation-settings:'FILL' 1">favorite</span>
             </p>
         </div>
@@ -618,7 +623,7 @@
         </div>
         <div class="mt-4 grid grid-cols-1 gap-2.5">
             <button id="cart-checkout" class="btn-ember w-full py-3! text-xs uppercase tracking-wider cursor-pointer">Lanjut ke Pembayaran</button>
-            <a id="cart-whatsapp" href="#" data-whatsapp-phone="{{ env('WHATSAPP_NUMBER', '6285810405551') }}" class="btn-ghost w-full py-3! text-xs uppercase tracking-wider !text-herb !border-herb/30 hover:!bg-herb-soft">
+            <a id="cart-whatsapp" href="#" data-whatsapp-phone="{{ config('services.whatsapp.number', '6285810405551') }}" class="btn-ghost w-full py-3! text-xs uppercase tracking-wider !text-herb !border-herb/30 hover:!bg-herb-soft">
                 <span class="material-symbols-outlined" style="font-size:18px">chat</span> Pesan via WhatsApp
             </a>
         </div>
@@ -646,17 +651,27 @@
                 <label for="checkout-phone" class="field-label">No. Telepon / WhatsApp</label>
                 <input id="checkout-phone" type="tel" placeholder="Contoh: 08123456789" class="field">
             </div>
-            <div>
-                <label for="checkout-service" class="field-label">Metode Layanan</label>
-                <select id="checkout-service" class="field">
-                    <option value="dine_in">Makan di Tempat (Dine-in)</option>
-                    <option value="takeaway">Bawa Pulang (Takeaway)</option>
-                    <option value="delivery">Pesan Antar (Delivery)</option>
-                </select>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                    <label for="checkout-service" class="field-label">Metode Layanan</label>
+                    <select id="checkout-service" class="field">
+                        <option value="dine_in">Makan di Tempat (Dine-in)</option>
+                        <option value="takeaway">Bawa Pulang (Takeaway)</option>
+                        <option value="delivery">Pesan Antar (Delivery)</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="checkout-payment" class="field-label">Metode Pembayaran</label>
+                    <select id="checkout-payment" class="field">
+                        <option value="cash">Tunai di Kasir</option>
+                        <option value="qris">QRIS (Scan Instan)</option>
+                        <option value="transfer">Transfer Bank</option>
+                    </select>
+                </div>
             </div>
             <div>
                 <span class="field-label">Ringkasan Pesanan</span>
-                <div id="checkout-summary" class="max-h-[35vh] space-y-2.5 overflow-y-auto rounded-2xl border border-line bg-[#FAF7F2] p-4 text-sm"></div>
+                <div id="checkout-summary" class="max-h-[30vh] space-y-2.5 overflow-y-auto rounded-2xl border border-line bg-[#FAF7F2] p-4 text-sm"></div>
             </div>
         </div>
         <div class="mt-6 flex items-center justify-between border-t border-line/60 pt-4">
@@ -687,7 +702,7 @@
         <div class="mt-5 flex justify-center">
             <span class="inline-flex items-center gap-2 rounded-full border border-herb/30 bg-herb-soft px-5 py-2 font-mono text-xs font-bold uppercase tracking-wider text-herb">
                 <span class="material-symbols-outlined text-base" style="font-variation-settings:'FILL' 1">check_circle</span>
-                Status: Lunas (Manual)
+                Status: Pesanan Tercatat
             </span>
         </div>
         <div class="mt-6 grid grid-cols-2 gap-4 rounded-2xl bg-[#FAF7F2] p-4 border border-line/60">
@@ -714,15 +729,18 @@
                 <div id="order-ref-code" class="font-mono text-xs tracking-widest text-sand font-bold">-</div>
             </div>
         </div>
-        <div id="order-confirmation-items" class="mt-5 max-h-[30vh] space-y-2.5 overflow-y-auto rounded-2xl border border-line bg-[#FAF7F2] p-4 text-sm"></div>
+        <div id="order-confirmation-items" class="mt-5 max-h-[25vh] space-y-2.5 overflow-y-auto rounded-2xl border border-line bg-[#FAF7F2] p-4 text-sm"></div>
         <div class="mt-5 flex items-center justify-between border-t border-line/60 pt-4">
             <span class="font-mono text-xs uppercase tracking-wider text-sand font-semibold">Total Bayar</span>
             <span id="order-confirmation-total" class="font-mono text-xl font-extrabold text-ember">Rp 0</span>
         </div>
-        <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+        <div class="mt-5 grid grid-cols-1 gap-2.5 sm:grid-cols-3">
             <button id="order-confirmation-copy" class="btn-ember w-full py-3! uppercase tracking-wider text-xs cursor-pointer">
                 <span class="material-symbols-outlined text-base">print</span> Cetak Struk
             </button>
+            <a id="order-track-link" href="/order/track" class="btn-ghost w-full py-3! uppercase tracking-wider text-xs !border-ember/30 !text-ember hover:!bg-ember/5 text-center">
+                <span class="material-symbols-outlined text-base">local_shipping</span> Lacak Status
+            </a>
             <button id="order-confirmation-close-2" class="btn-ghost w-full py-3! uppercase tracking-wider text-xs cursor-pointer">Selesai</button>
         </div>
     </div>

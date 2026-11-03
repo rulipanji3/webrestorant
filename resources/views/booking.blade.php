@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
     @vite(['resources/css/booking.css', 'resources/js/booking.js'])
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="whatsapp-number" content="{{ env('WHATSAPP_NUMBER', '6285810405551') }}">
+    <meta name="whatsapp-number" content="{{ config('services.whatsapp.number', '6285810405551') }}">
 </head>
 <body class="selection:bg-ember selection:text-white bg-[#FAF7F2] text-bone font-sans antialiased">
 <header id="site-header" class="fixed inset-x-0 top-0 z-50 border-b border-line/70 bg-[#FAF7F2]/90 backdrop-blur-md transition-all duration-300">
@@ -23,6 +23,7 @@
             <span class="font-display text-xl font-bold tracking-tight text-bone">Mba <span class="text-ember">Neni</span></span>
         </a>
         <div class="flex items-center gap-4">
+            <a href="/order/track" class="hidden font-mono text-[12px] uppercase tracking-[0.16em] text-sand font-semibold transition-colors hover:text-ember sm:inline">Lacak Pesanan</a>
             <a href="/order" class="font-mono text-[12px] uppercase tracking-[0.16em] text-sand font-semibold transition-colors hover:text-ember">Menu &amp; Order</a>
             <a href="/order" class="btn-ember py-2.5! px-5! text-xs uppercase tracking-wider hidden sm:inline-flex">
                 <span class="material-symbols-outlined" style="font-size:18px">shopping_cart</span>

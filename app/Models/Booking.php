@@ -24,4 +24,14 @@ class Booking extends Model
             'guests' => 'integer',
         ];
     }
+
+    public static function statusLabel(?string $status): string
+    {
+        return match ($status) {
+            'confirmed' => 'Terkonfirmasi',
+            'completed' => 'Selesai / Hadir',
+            'cancelled' => 'Dibatalkan',
+            default => 'Menunggu Konfirmasi',
+        };
+    }
 }

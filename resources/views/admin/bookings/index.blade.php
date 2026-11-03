@@ -22,6 +22,8 @@
             --ember-600: #A33A18;
             --ok: #247A38;
             --ok-bg: rgba(36, 122, 56, 0.08);
+            --info: #1D4ED8;
+            --info-bg: #DBEAFE;
             --danger: #9B1C1C;
             --danger-bg: #FDE8E8;
             --warn: #B45309;
@@ -41,7 +43,7 @@
         ::selection { background: var(--ember); color: #FFFFFF; }
         :focus-visible { outline: 2px solid var(--ember); outline-offset: 2px; }
 
-        .layout { max-width: 960px; margin: 0 auto; padding: 28px 20px; }
+        .layout { max-width: 1120px; margin: 0 auto; padding: 28px 20px; }
 
         /* Topbar */
         .topbar {
@@ -129,10 +131,45 @@
         .btn .material-symbols-outlined { font-size: 17px; }
         .btn-outline { background: var(--coal); border-color: var(--line); color: var(--bone); }
         .btn-outline:hover { border-color: #D6C7B4; background: #FAF7F2; }
+        .btn-ok { background: var(--ok-bg); color: var(--ok); border: 1px solid rgba(36, 122, 56, 0.25); }
+        .btn-ok:hover { background: rgba(36, 122, 56, 0.16); }
         .btn-danger { background: var(--danger-bg); color: var(--danger); border: 1px solid #FBD5D5; }
         .btn-danger:hover { background: #FBD5D5; }
         .btn:active { transform: scale(.98); }
         .btn-sm { padding: 6px 12px; font-size: 11.5px; }
+
+        /* Status Filter Tabs */
+        .filter-tabs {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+        .filter-tab {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 7px 14px;
+            border-radius: 999px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 11.5px;
+            font-weight: 600;
+            text-decoration: none;
+            color: var(--sand);
+            background: var(--coal);
+            border: 1px solid var(--line);
+            transition: all .15s;
+        }
+        .filter-tab:hover { border-color: var(--ember); color: var(--bone); }
+        .filter-tab.active { background: var(--bone); color: #FFF; border-color: var(--bone); }
+        .filter-count {
+            background: rgba(0,0,0,0.08);
+            padding: 1px 7px;
+            border-radius: 999px;
+            font-size: 10.5px;
+        }
+        .filter-tab.active .filter-count { background: rgba(255,255,255,0.2); color: #FFF; }
 
         .flash {
             display: flex;
@@ -172,19 +209,22 @@
         }
         .booking-card:hover { border-color: #D6C7B4; box-shadow: 0 6px 20px rgba(35, 25, 19, 0.06); }
         .bk-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-        .bk-name { font-size: 17px; font-weight: 700; color: var(--bone); display: flex; align-items: center; gap: 8px; }
+        .bk-name { font-size: 17px; font-weight: 700; color: var(--bone); display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
         .bk-name .material-symbols-outlined { color: var(--ember); font-size: 20px; }
         .bk-sub { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--sand); margin-top: 4px; }
-        .badge { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: .02em; white-space: nowrap; }
+        .badge { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 999px; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: .03em; white-space: nowrap; text-transform: uppercase; }
         .badge-pending { background: var(--warn-bg); border: 1px solid #FDE68A; color: var(--warn); }
-        .badge-pending .material-symbols-outlined { font-size: 16px; }
+        .badge-confirmed { background: var(--ok-bg); border: 1px solid rgba(36, 122, 56, 0.25); color: var(--ok); }
+        .badge-completed { background: var(--info-bg); border: 1px solid #BFDBFE; color: var(--info); }
+        .badge-cancelled { background: var(--danger-bg); border: 1px solid #FBD5D5; color: var(--danger); }
+        .badge .material-symbols-outlined { font-size: 15px; }
 
         .bk-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
         .bk-tag { display: inline-flex; align-items: center; gap: 7px; background: #FAF7F2; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 13px; font-weight: 600; color: var(--bone); }
         .bk-tag .material-symbols-outlined { font-size: 17px; color: var(--ember); }
         .bk-notes { margin-top: 14px; font-size: 13.5px; line-height: 1.7; color: var(--sand); background: #FAF7F2; border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; }
         .bk-notes::before { content: 'Catatan Khusus'; display: block; font-family: 'JetBrains Mono', monospace; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--dust); margin-bottom: 4px; font-weight: 700; }
-        .bk-actions { display: flex; justify-content: flex-end; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+        .bk-actions { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
 
         @media(max-width: 768px) {
             .layout { padding: 16px; }
@@ -204,7 +244,7 @@
                 <div>
                     <div class="brand-name">Warung Makan Mba Neni</div>
                     <h1>Booking Meja</h1>
-                    <p class="bite">Daftar reservasi meja dari pelanggan warung.</p>
+                    <p class="bite">Daftar reservasi meja &amp; konfirmasi kehadiran tamu (Kapasitas maks {{ config('services.booking.max_guests_per_slot', 40) }} kursi/jam).</p>
                 </div>
             </div>
 
@@ -214,6 +254,7 @@
                 <a href="{{ route('admin.menu.availability') }}" class="nav-link"><span class="material-symbols-outlined">toggle_on</span>Ketersediaan</a>
                 <a href="{{ route('admin.categories.index') }}" class="nav-link"><span class="material-symbols-outlined">category</span>Kategori</a>
                 <a href="{{ route('admin.bookings.index') }}" class="nav-link active"><span class="material-symbols-outlined">event_available</span>Booking</a>
+                <a href="{{ route('admin.reports.index') }}" class="nav-link"><span class="material-symbols-outlined">analytics</span>Laporan</a>
             </div>
 
             <div class="topbar-right">
@@ -229,6 +270,25 @@
             <div class="flash"><span class="material-symbols-outlined">check_circle</span>{{ session('success') }}</div>
         @endif
 
+        <!-- Filter Tabs -->
+        <div class="filter-tabs">
+            <a href="{{ route('admin.bookings.index') }}" class="filter-tab {{ empty($statusFilter) ? 'active' : '' }}">
+                Semua <span class="filter-count">{{ $statusCounts['all'] ?? 0 }}</span>
+            </a>
+            <a href="{{ route('admin.bookings.index', ['status' => 'pending']) }}" class="filter-tab {{ ($statusFilter ?? '') === 'pending' ? 'active' : '' }}">
+                Menunggu <span class="filter-count">{{ $statusCounts['pending'] ?? 0 }}</span>
+            </a>
+            <a href="{{ route('admin.bookings.index', ['status' => 'confirmed']) }}" class="filter-tab {{ ($statusFilter ?? '') === 'confirmed' ? 'active' : '' }}">
+                Terkonfirmasi <span class="filter-count">{{ $statusCounts['confirmed'] ?? 0 }}</span>
+            </a>
+            <a href="{{ route('admin.bookings.index', ['status' => 'completed']) }}" class="filter-tab {{ ($statusFilter ?? '') === 'completed' ? 'active' : '' }}">
+                Selesai / Hadir <span class="filter-count">{{ $statusCounts['completed'] ?? 0 }}</span>
+            </a>
+            <a href="{{ route('admin.bookings.index', ['status' => 'cancelled']) }}" class="filter-tab {{ ($statusFilter ?? '') === 'cancelled' ? 'active' : '' }}">
+                Dibatalkan <span class="filter-count">{{ $statusCounts['cancelled'] ?? 0 }}</span>
+            </a>
+        </div>
+
         @if($bookings->isEmpty())
             <div class="empty">
                 <span class="material-symbols-outlined">event_busy</span>
@@ -237,36 +297,88 @@
             </div>
         @else
             @foreach($bookings as $booking)
+                @php
+                    $badgeClass = match($booking->status) {
+                        'confirmed' => 'badge-confirmed',
+                        'completed' => 'badge-completed',
+                        'cancelled' => 'badge-cancelled',
+                        default => 'badge-pending',
+                    };
+                    $waPhone = preg_replace('/[^0-9]/', '', (string) $booking->phone);
+                    if (str_starts_with($waPhone, '0')) {
+                        $waPhone = '62' . substr($waPhone, 1);
+                    }
+                    $waMsg = "Halo Kak {$booking->name}, kami dari Warung Makan Mba Neni ingin mengonfirmasi reservasi meja untuk {$booking->guests} orang pada tanggal " . \Carbon\Carbon::parse($booking->date)->format('d M Y') . " pukul {$booking->time}. Meja Anda telah kami siapkan. Terima kasih!";
+                @endphp
                 <div class="booking-card">
                     <div class="bk-header">
                         <div>
                             <div class="bk-name">
                                 <span class="material-symbols-outlined">person</span>
                                 {{ $booking->name }}
+                                <span class="badge {{ $badgeClass }}">
+                                    {{ \App\Models\Booking::statusLabel($booking->status) }}
+                                </span>
                             </div>
                             <div class="bk-sub">{{ $booking->phone }}</div>
                         </div>
-                        <span class="badge badge-pending"><span class="material-symbols-outlined">schedule</span>{{ \Carbon\Carbon::parse($booking->date)->format('d M Y') }} • {{ $booking->time }}</span>
+                        <span class="badge badge-pending">
+                            <span class="material-symbols-outlined">schedule</span>
+                            {{ \Carbon\Carbon::parse($booking->date)->format('d M Y') }} • {{ $booking->time }}
+                        </span>
                     </div>
                     <div class="bk-meta">
                         <span class="bk-tag"><span class="material-symbols-outlined">group</span>{{ $booking->guests }} orang</span>
                         @if($booking->table_type)
-                            <span class="bk-tag"><span class="material-symbols-outlined">table_bar</span>{{ $booking->table_type }}</span>
+                            <span class="bk-tag"><span class="material-symbols-outlined">table_bar</span>{{ ucfirst($booking->table_type) }}</span>
                         @endif
-                        <span class="bk-tag"><span class="material-symbols-outlined">calendar_today</span>{{ $booking->date }}</span>
+                        <span class="bk-tag"><span class="material-symbols-outlined">calendar_today</span>{{ \Carbon\Carbon::parse($booking->date)->format('Y-m-d') }}</span>
                     </div>
                     @if($booking->notes)
                         <div class="bk-notes">{{ $booking->notes }}</div>
                     @endif
                     <div class="bk-actions">
-                        <form action="{{ route('admin.bookings.destroy', $booking) }}" method="POST" style="display:inline" onsubmit="return confirm('Hapus booking ini?');">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger">
-                                <span class="material-symbols-outlined">delete</span>
-                                Hapus
-                            </button>
-                        </form>
+                        <div style="display:flex;gap:6px;flex-wrap:wrap">
+                            <form action="{{ route('admin.bookings.status', $booking) }}" method="POST" style="display:inline">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" name="status" value="confirmed">
+                                <button type="submit" class="btn btn-sm btn-ok" {{ $booking->status === 'confirmed' ? 'disabled style=opacity:.5' : '' }}>
+                                    <span class="material-symbols-outlined">check_circle</span>Konfirmasi
+                                </button>
+                            </form>
+                            <form action="{{ route('admin.bookings.status', $booking) }}" method="POST" style="display:inline">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" name="status" value="completed">
+                                <button type="submit" class="btn btn-sm btn-outline" {{ $booking->status === 'completed' ? 'disabled style=opacity:.5' : '' }}>
+                                    <span class="material-symbols-outlined">task_alt</span>Selesai
+                                </button>
+                            </form>
+                            <form action="{{ route('admin.bookings.status', $booking) }}" method="POST" style="display:inline">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" name="status" value="cancelled">
+                                <button type="submit" class="btn btn-sm btn-outline" {{ $booking->status === 'cancelled' ? 'disabled style=opacity:.5' : '' }}>
+                                    <span class="material-symbols-outlined">cancel</span>Batalkan
+                                </button>
+                            </form>
+                        </div>
+
+                        <div style="display:flex;gap:8px;flex-wrap:wrap">
+                            @if($waPhone)
+                                <a href="https://wa.me/{{ $waPhone }}?text={{ urlencode($waMsg) }}" target="_blank" class="btn btn-sm btn-outline">
+                                    <span class="material-symbols-outlined">chat</span>Hubungi WA
+                                </a>
+                            @endif
+                            <form action="{{ route('admin.bookings.destroy', $booking) }}" method="POST" style="display:inline" onsubmit="return confirm('Hapus booking ini?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    <span class="material-symbols-outlined">delete</span>Hapus
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             @endforeach
