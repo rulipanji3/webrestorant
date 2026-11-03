@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visual Paradigm UML Diagrams — Warung Makan Mba Neni</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Mermaid CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+    <style>
+        :root {
+            --bg: #F8FAFC;
+            --surface: #FFFFFF;
+            --border: #E2E8F0;
+            --text-main: #0F172A;
+            --text-muted: #64748B;
+            --primary: #0284C7;
+            --primary-dark: #0369A1;
+            --vp-blue: #007ACC;
+            --vp-orange: #EA580C;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Topbar Header styling like Visual Paradigm Online */
+        .vp-header {
+            background: #1E293B;
+            color: #FFFFFF;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+        }
+
+        .vp-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .vp-logo {
+            background: linear-gradient(135deg, #0284C7, #0369A1);
+            color: white;
+            font-weight: 800;
+            font-size: 14px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            letter-spacing: 0.5px;
+        }
+
+        .vp-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #F1F5F9;
+        }
+
+        .vp-subtitle {
+            font-size: 12px;
+            color: #94A3B8;
+        }
+
+        .vp-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 7px 14px;
+            border-radius: 6px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border-color: #475569;
+            color: #E2E8F0;
+        }
+        .btn-outline:hover {
+            background: #334155;
+            color: #FFF;
+        }
+
+        .btn-primary {
+            background: var(--vp-blue);
+            color: #FFF;
+        }
+        .btn-primary:hover {
+            background: #0062A3;
+        }
+
+        /* Navigation Bar / Tabs */
+        .tab-bar {
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            padding: 0 24px;
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+        }
+
+        .tab-btn {
+            padding: 14px 18px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-muted);
+            border: none;
+            background: none;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            color: var(--text-main);
+        }
+
+        .tab-btn.active {
+            color: var(--vp-blue);
+            border-bottom-color: var(--vp-blue);
+        }
+
+        /* Main Workspace Canvas */
+        .workspace {
+            flex: 1;
+            padding: 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .diagram-card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 28px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            display: none;
+        }
+
+        .diagram-card.active {
+            display: block;
+        }
+
+        .diagram-header {
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .diagram-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+
+        .diagram-desc {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Diagram Canvas Area */
+        .diagram-canvas {
+            background: #FFFFFF;
+            border: 1px dashed #CBD5E1;
+            border-radius: 8px;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            overflow-x: auto;
+            min-height: 480px;
+        }
+
+        .mermaid {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Explanations Section */
+        .explanation-box {
+            margin-top: 24px;
+            padding: 16px 20px;
+            background: #F1F5F9;
+            border-left: 4px solid var(--vp-blue);
+            border-radius: 0 8px 8px 0;
+            font-size: 13.5px;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .explanation-box h4 {
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .explanation-box ul {
+            padding-left: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 13px;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border);
+            background: var(--surface);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Styled Like Visual Paradigm -->
+    <header class="vp-header">
+        <div class="vp-brand">
+            <span class="vp-logo">VP</span>
+            <div>
+                <div class="vp-title">Warung Makan Mba Neni — UML Diagrams Architecture</div>
+                <div class="vp-subtitle">Visual Paradigm Online Standard • Laravel 13 Project</div>
+            </div>
+        </div>
+        <div class="vp-actions">
+            <a href="https://online.visual-paradigm.com/app/diagrams/" target="_blank" class="btn btn-outline">Buka Visual Paradigm Online</a>
+            <button class="btn btn-primary" onclick="window.print()">Cetak / Simpan PDF</button>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="tab-bar">
+        <button class="tab-btn active" onclick="switchTab('usecase')">1. Use Case Diagram</button>
+        <button class="tab-btn" onclick="switchTab('class')">2. Class Diagram</button>
+        <button class="tab-btn" onclick="switchTab('sequence-checkout')">3. Sequence: Order Checkout</button>
+        <button class="tab-btn" onclick="switchTab('sequence-booking')">4. Sequence: Reservasi Meja</button>
+        <button class="tab-btn" onclick="switchTab('activity-order')">5. Activity: Pemesanan Makanan</button>
+        <button class="tab-btn" onclick="switchTab('activity-admin')">6. Activity: Manajemen Admin</button>
+    </nav>
+
+    <!-- Content Workspace -->
+    <main class="workspace">
+
+        <!-- 1. USE CASE DIAGRAM -->
+        <section id="usecase" class="diagram-card active">
+            <div class="diagram-header">
+                <div>
+                    <h2 class="diagram-title">Use Case Diagram</h2>
+                    <p class="diagram-desc">Menggambarkan fungsionalitas utama sistem Warung Makan Mba Neni dari sudut pandang Pelanggan dan Admin.</p>
+                </div>
+            </div>
+            <div class="diagram-canvas">
+                <div class="mermaid">
+flowchart LR
+    subgraph Aktor ["Aktor Sistem"]
+        Pelanggan["👤 Pelanggan (Customer)"]
+        Admin["👤 Admin Warung"]
+        WhatsApp["📱 WhatsApp / Mailer API"]
+    end
+
+    subgraph Sistem ["Sistem Web Warung Makan Mba Neni"]
+        UC01(["UC01: Melihat Menu & Info Warung"])
+        UC02(["UC02: Cek Ketersediaan Menu Realtime"])
+        UC03(["UC03: Melakukan Pemesanan Makanan"])
+        UC04(["UC04: Memilih Tipe Layanan (Dine-in/Takeaway/Delivery)"])
+        UC05(["UC05: Cetak Struk Digital & Barcode Invoice"])
+        UC06(["UC06: Melakukan Reservasi Meja (Booking)"])
+        UC07(["UC07: Mengirim Konfirmasi WhatsApp"])
+
+        UC08(["UC08: Login Admin"])
+        UC09(["UC09: Memantau & Mengelola Pesanan Masuk"])
+        UC10(["UC10: Mengelola Menu (CRUD & Upload Foto)"])
+        UC11(["UC11: Mengatur Ketersediaan Stok (Toggle)"])
+        UC12(["UC12: Mengelola Kategori Menu"])
+        UC13(["UC13: Memantau & Mengelola Reservasi Meja"])
+    end
+
+    Pelanggan --> UC01
+    Pelanggan --> UC03
+    Pelanggan --> UC06
+
+    UC01 -.->|"<<include>>"| UC02
+    UC03 -.->|"<<include>>"| UC02
+    UC03 -.->|"<<include>>"| UC04
+    UC03 -.->|"<<include>>"| UC05
+    UC03 -.->|"<<extend>>"| UC07
+    UC06 -.->|"<<extend>>"| UC07
+    UC07 --> WhatsApp
+
+    Admin --> UC08
+    Admin --> UC09
+    Admin --> UC10
+    Admin --> UC11
+    Admin --> UC12
+    Admin --> UC13
+    UC09 -.->|"<<include>>"| UC08
+    UC10 -.->|"<<include>>"| UC08
+    UC11 -.->|"<<include>>"| UC08
+    UC12 -.->|"<<include>>"| UC08
+    UC13 -.->|"<<include>>"| UC08
+                </div>
+            </div>
+            <div class="explanation-box">
+                <h4>Deskripsi Hubungan:</h4>
+                <ul>
+                    <li><strong>&lt;&lt;include&gt;&gt;</strong>: Setiap kali Pelanggan melakukan pemesanan (UC03), sistem secara otomatis mengecek ketersediaan menu (UC02) dan mencetak barcode struk (UC05).</li>
+                    <li><strong>&lt;&lt;extend&gt;&gt;</strong>: Pengiriman rincian pesanan dan bukti reservasi ke WhatsApp (UC07) dieksekusi sebagai opsi konfirmasi langsung ke kasir warung.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2. CLASS DIAGRAM -->
+        <section id="class" class="diagram-card">
+            <div class="diagram-header">
+                <div>
+                    <h2 class="diagram-title">Class Diagram</h2>
+                    <p class="diagram-desc">Menggambarkan struktur entitas model data Eloquent, atribut, method, serta relasi asosiasi sistem.</p>
+                </div>
+            </div>
+            <div class="diagram-canvas">
+                <div class="mermaid">
+classDiagram
+    class Category {
+        +int id
+        +string name
+        +string slug
+        +timestamp created_at
+        +timestamp updated_at
+        +booted() void
+        +menuItems() HasMany
+    }
+
+    class MenuItem {
+        +int id
+        +int category_id
+        +string name
+        +string description
+        +int price
+        +string image_url
+        +string image
+        +boolean is_available
+        +timestamp created_at
+        +timestamp updated_at
+        +category() BelongsTo
+        +imageSrc() string
+        +casts() array
+    }
+
+    class Order {
+        +int id
+        +string reference_code
+        +string customer_name
+        +string customer_phone
+        +string service_type
+        +string status
+        +int total
+        +timestamp created_at
+        +timestamp updated_at
+        +items() HasMany
+        +serviceLabel(type) string
+    }
+
+    class OrderItem {
+        +int id
+        +int order_id
+        +string product_id
+        +string name
+        +int price
+        +int quantity
+        +timestamp created_at
+        +timestamp updated_at
+        +order() BelongsTo
+    }
+
+    class Booking {
+        +int id
+        +string name
+        +string phone
+        +date date
+        +string time
+        +int guests
+        +string table_type
+        +string notes
+        +string status
+        +timestamp created_at
+        +timestamp updated_at
+        +casts() array
+    }
+
+    class CheckoutController {
+        +index(Request) View
+        +store(Request) JsonResponse
+        +destroy(Order) RedirectResponse
+        +destroyAll() RedirectResponse
+    }
+
+    class MenuItemController {
+        +index(Request) View
+        +store(Request) RedirectResponse
+        +edit(MenuItem) View
+        +update(Request, MenuItem) RedirectResponse
+        +destroy(MenuItem) RedirectResponse
+        +availableIds() JsonResponse
+        +availability() View
+        +toggleAvailability(MenuItem, Request) Response
+    }
+
+    Category "1" --> "0..*" MenuItem : hasMany
+    Order "1" *-- "1..*" OrderItem : composition
+    MenuItem "0..1" ..> "0..*" OrderItem : referenced by
+    CheckoutController ..> Order : manages
+    CheckoutController ..> OrderItem : creates
+    MenuItemController ..> MenuItem : manages
+                </div>
+            </div>
+            <div class="explanation-box">
+                <h4>Kardinalitas & Relasi:</h4>
+                <ul>
+                    <li><code>Category</code> ke <code>MenuItem</code>: 1 ke Banyak (*One-to-Many*).</li>
+                    <li><code>Order</code> ke <code>OrderItem</code>: Komposisi (*Composition*), jika Order dihapus maka OrderItem yang terasosiasi otomatis ikut terhapus (*cascade delete*).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 3. SEQUENCE DIAGRAM: CHECKOUT -->
+        <section id="sequence-checkout" class="diagram-card">
+            <div class="diagram-header">
+                <div>
+                    <h2 class="diagram-title">Sequence Diagram: Pemesanan Makanan Online</h2>
+                    <p class="diagram-desc">Interaksi pertukaran pesan dari pelanggan, browser frontend, controller, validasi stok, hingga pembuatan struk invoice.</p>
+                </div>
+            </div>
+            <div class="diagram-canvas">
+                <div class="mermaid">
+sequenceDiagram
+    autonumber
+    actor Pelanggan as "Pelanggan"
+    participant Browser as "Browser / UI (AlpineJS)"
+    participant Controller as "CheckoutController"
+    participant MenuItemModel as "MenuItem Model"
+    participant OrderModel as "Order Model"
+    participant ItemModel as "OrderItem Model"
+    participant DB as "Database"
+
+    Pelanggan->>Browser: Pilih hidangan & isi nama/telepon
+    Pelanggan->>Browser: Klik "Pesan Sekarang"
+    Browser->>Controller: POST /checkout (items, total, customer_name, service_type)
+    
+    activate Controller
+    Controller->>MenuItemModel: Query MenuItem::where('is_available', true)
+    MenuItemModel->>DB: SELECT id FROM menu_items WHERE is_available = 1
+    DB-->>MenuItemModel: Return list available IDs
+    MenuItemModel-->>Controller: Return Collection IDs
+
+    alt Ada Item yang Habis
+        Controller-->>Browser: Return JSON 409 (Item tidak tersedia)
+        Browser-->>Pelanggan: Tampilkan pesan peringatan stok habis
+    else Semua Item Tersedia
+        Controller->>OrderModel: Order::create(total, ref_code, customer_info)
+        OrderModel->>DB: INSERT INTO orders ...
+        DB-->>OrderModel: Return Order ID
+        
+        loop Setiap Item
+            Controller->>ItemModel: OrderItem::create(order_id, name, price, qty)
+            ItemModel->>DB: INSERT INTO order_items ...
+        end
+
+        Controller-->>Browser: Return JSON 200 (order_id, ref_code, barcode_url)
+        deactivate Controller
+        
+        Browser-->>Pelanggan: Tampilkan Struk Digital & Tombol Konfirmasi WhatsApp
+    end
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SEQUENCE DIAGRAM: BOOKING -->
+        <section id="sequence-booking" class="diagram-card">
+            <div class="diagram-header">
+                <div>
+                    <h2 class="diagram-title">Sequence Diagram: Reservasi Meja</h2>
+                    <p class="diagram-desc">Interaksi proses booking meja dari pengisian formulir hingga integrasi WhatsApp.</p>
+                </div>
+            </div>
+            <div class="diagram-canvas">
+                <div class="mermaid">
+sequenceDiagram
+    autonumber
+    actor Pelanggan as "Pelanggan"
+    participant Browser as "Browser (/booking)"
+    participant Controller as "BookingController"
+    participant Model as "Booking Model"
+    participant DB as "Database"
+    participant WA as "WhatsApp App"
+
+    Pelanggan->>Browser: Isi data booking (nama, WA, tanggal, jam, jumlah tamu, area meja)
+    Pelanggan->>Browser: Klik "Pesan Meja via WhatsApp"
+    Browser->>Controller: POST /booking (data payload)
+    activate Controller
+    Controller->>Model: Booking::create($data)
+    Model->>DB: INSERT INTO bookings ...
+    DB-->>Model: Return new booking
+    Model-->>Controller: Return $booking
+    Controller-->>Browser: Return JSON 200 (success: true)
+    deactivate Controller
+
+    Browser->>WA: Buka link WhatsApp API dengan template rincian reservasi
+    WA-->>Pelanggan: Chat WhatsApp terkirim ke kasir Warung Mba Neni
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. ACTIVITY DIAGRAM: ORDER -->
+        <section id="activity-order" class="diagram-card">
+            <div class="diagram-header">
+                <div>
+                    <h2 class="diagram-title">Activity Diagram: Alur Pemesanan Makanan</h2>
+                    <p class="diagram-desc">Alur aktivitas pengguna dari memilih menu, validasi ketersediaan, hingga menerima struk belanja.</p>
+                </div>
+            </div>
+            <div class="diagram-canvas">
+                <div class="mermaid">
+flowchart TD
+    Start([● Mulai]) --> BukaOrder["Buka Halaman Menu & Order (/order)"]
+    BukaOrder --> PilihKategori["Pilih Kategori Hidangan"]
+    PilihKategori --> TambahMenu["Pilih Item & Masukkan ke Keranjang"]
+    TambahMenu --> CekKeranjang{"Periksa Keranjang"}
+    
+    CekKeranjang -->|Revisi Keranjang| UbahQty["Ubah Jumlah / Hapus Item"]
+    UbahQty --> CekKeranjang
+    
+    CekKeranjang -->|Lanjut| IsiForm["Isi Nama, Telepon & Tipe Layanan"]
+    IsiForm --> Submit["Klik 'Pesan Sekarang'"]
+    
+    Submit --> ValidasiClient{"Validasi Ketersediaan Menu"}
+    ValidasiClient -->|Ada Item Habis| NotifHabis["Pemberitahuan Item Habis"]
+    NotifHabis --> UbahQty
+    
+    ValidasiClient -->|Semua Tersedia| SimpanPesanan["Simpan Order & Item ke Database"]
+    SimpanPesanan --> BuatInvoice["Generate Kode Invoice & Barcode"]
+    BuatInvoice --> TampilStruk["Tampilkan Struk Digital"]
+    TampilStruk --> Selesai([◉ Selesai])
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. ACTIVITY DIAGRAM: ADMIN -->
+        <section id="activity-admin" class="diagram-card">
+            <div class="diagram-header">
+                <div>
+                    <h2 class="diagram-title">Activity Diagram: Alur Manajemen Admin</h2>
+                    <p class="diagram-desc">Alur aktivitas autentikasi admin dan navigasi fitur kelola pesanan, menu, stok, dan reservasi.</p>
+                </div>
+            </div>
+            <div class="diagram-canvas">
+                <div class="mermaid">
+flowchart TD
+    Start([● Mulai]) --> AksesAdmin["Akses URL /admin"]
+    AksesAdmin --> CekSesi{"Sudah Login Admin?"}
+    
+    CekSesi -->|Belum| FormLogin["Tampilkan Halaman Login (/admin/login)"]
+    FormLogin --> InputKredensial["Input Username & Password"]
+    InputKredensial --> CekKredensial{"Validasi Kredensial"}
+    CekKredensial -->|Salah| FormLogin
+    CekKredensial -->|Benar| SetSession["Set Session Admin"]
+    
+    CekSesi -->|Sudah| Dashboard["Masuk ke Dashboard Admin"]
+    SetSession --> Dashboard
+    
+    Dashboard --> PilihMenu{"Pilih Fitur Pengelolaan"}
+    PilihMenu -->|Pesanan| MenuPesanan["Pantau & Hapus Pesanan Masuk"]
+    PilihMenu -->|Menu| KelolaMenu["Tambah / Edit / Hapus Menu & Upload Foto"]
+    PilihMenu -->|Ketersediaan| ToggleStok["Toggle Status Tersedia / Habis Realtime"]
+    PilihMenu -->|Kategori| KelolaKategori["Kelola Kategori Makanan & Minuman"]
+    PilihMenu -->|Booking| KelolaBooking["Pantau Jadwal Booking Meja"]
+    PilihMenu -->|Logout| Keluar["Logout & Bersihkan Session"]
+    
+    Keluar --> Selesai([◉ Selesai])
+    MenuPesanan --> Dashboard
+    KelolaMenu --> Dashboard
+    ToggleStok --> Dashboard
+    KelolaKategori --> Dashboard
+    KelolaBooking --> Dashboard
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        Warung Makan Mba Neni &copy; 2026 • UML System Specification Architecture (Visual Paradigm Standard)
+    </footer>
+
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: 'neutral',
+            fontFamily: 'Plus Jakarta Sans',
+            securityLevel: 'loose'
+        });
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.diagram-card').forEach(card => card.classList.remove('active'));
+
+            event.target.classList.add('active');
+            const targetCard = document.getElementById(tabId);
+            if (targetCard) {
+                targetCard.classList.add('active');
+                mermaid.run({ nodes: targetCard.querySelectorAll('.mermaid') });
+            }
+        }
+    </script>
+</body>
+</html>

@@ -129,6 +129,21 @@ Tests: 7 passed (25 assertions)
 
 ---
 
+## 📐 Arsitektur & Diagram UML (Visual Paradigm Standard)
+
+Dokumentasi lengkap pemodelan sistem berbasis standar **Visual Paradigm** dan **Mermaid** tersedia di:
+- 📄 **Dokumentasi Markdown UML:** [docs/UML_DIAGRAMS.md](docs/UML_DIAGRAMS.md)
+- 🌐 **Interactive Diagram Viewer:** [docs/diagrams.html](docs/diagrams.html)
+
+Diagram mencakup:
+1. **Use Case Diagram:** Aktor (Pelanggan, Admin Warung, WhatsApp Gateway) & relasi `<<include>>`/`<<extend>>`.
+2. **Class Diagram:** Struktur entitas model Eloquent (`Order`, `OrderItem`, `MenuItem`, `Category`, `Booking`), atribut, methods, kardinalitas, dan controller.
+3. **Sequence Diagram:** Alur interaksi pemesanan online checkout, validasi stok realtime, reservasi meja, dan toggle stok admin.
+4. **Activity Diagram:** Alur aktivitas pengguna (*Customer order flow*, *Table booking*, dan *Admin management flow*).
+5. **PlantUML Ready:** Kode sumber PlantUML siap diimpor langsung ke [Visual Paradigm Online](https://online.visual-paradigm.com/app/diagrams/).
+
+---
+
 ## 📄 Lisensi
 
 Proyek ini dilisensikan di bawah [MIT License](LICENSE).
